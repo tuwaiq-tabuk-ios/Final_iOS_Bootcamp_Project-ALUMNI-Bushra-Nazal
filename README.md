@@ -24,8 +24,12 @@ Alumnis of a university on the same field.
 
 
 ## User stories
-● Share your thoughts and problems on the homepage through text or photo using the camera
-● Communicate through private messages 
+● Share your thoughts and problems on the homepage through text or photo using the camera.
+
+● Communicate through private messages
+
 ● A login page for everyone who does not have an account before starting to try the program
+
 ● Profile of everyone who logs in
+
 ● Search through the search bar
