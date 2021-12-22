@@ -1,8 +1,4 @@
-# Final_iOS_Bootcamp_Project-ALUMNI-Bushra-Nazal
-
-## Brief
 App for University alumni students to keep in contact after their graduation.
-
 
 ## Motivation
 During graduation there are no clear goals. Once graduated, the student does nothing but wait for the job to follow up on the student’s condition after graduation, follow the educational process in his field, set a goal in learning a programming language and gain experience that qualifies him to work and work with friends. Through the application, the employer can provide job opportunities by searching for distinguished people as they can Provide appropriate courses for them
