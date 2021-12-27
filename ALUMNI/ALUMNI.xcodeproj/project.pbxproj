@@ -21,6 +21,9 @@
 		539A460C2774F2AA00DE001F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A460B2774F2AA00DE001F /* HomeViewController.swift */; };
 		53D85DDB2777775300D11B72 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DDA2777775300D11B72 /* ShadowView.swift */; };
 		53D85DE12777B09200D11B72 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DE02777B09200D11B72 /* ProfileVC.swift */; };
+		53D85DE7277881FD00D11B72 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DE6277881FD00D11B72 /* ChatViewController.swift */; };
+		53D85DEB2778893500D11B72 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DEA2778893500D11B72 /* MessageCell.swift */; };
+		53D85DED2778ECD200D11B72 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DEC2778ECD200D11B72 /* Messages.swift */; };
 		53E8738F27705A990012B8E7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8738E27705A990012B8E7 /* Utilities.swift */; };
 		53E8739127707CA20012B8E7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8739027707CA20012B8E7 /* Constants.swift */; };
 		53E8739327707D5D0012B8E7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8739227707D5D0012B8E7 /* SignUpViewController.swift */; };
@@ -45,6 +48,9 @@
 		539A460B2774F2AA00DE001F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		53D85DDA2777775300D11B72 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		53D85DE02777B09200D11B72 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		53D85DE6277881FD00D11B72 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = ALUMNI/View/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
+		53D85DEA2778893500D11B72 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = ALUMNI/ViewController/MessageCell.swift; sourceTree = SOURCE_ROOT; };
+		53D85DEC2778ECD200D11B72 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		53E8738E27705A990012B8E7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		53E8739027707CA20012B8E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		53E8739227707D5D0012B8E7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 			children = (
 				532272AC276F1EDB00F05437 /* Main.storyboard */,
 				53D85DDA2777775300D11B72 /* ShadowView.swift */,
+				53D85DEA2778893500D11B72 /* MessageCell.swift */,
 				539A45FC2774E3D800DE001F /* CommentCell.swift */,
 				53F338F82770E4E70087EEEB /* PostCell.swift */,
 			);
@@ -123,6 +130,7 @@
 		53E87399277084F60012B8E7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				53D85DE6277881FD00D11B72 /* ChatViewController.swift */,
 				539A46002774E42B00DE001F /* postDetailsVC.swift */,
 				53F338FA2770EA550087EEEB /* NewPostVC.swift */,
 				532272AA276F1EDB00F05437 /* ViewController.swift */,
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				53F338F52770E13C0087EEEB /* Post.swift */,
+				53D85DEC2778ECD200D11B72 /* Messages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53D85DE12777B09200D11B72 /* ProfileVC.swift in Sources */,
+				53D85DED2778ECD200D11B72 /* Messages.swift in Sources */,
 				53E873952770848F0012B8E7 /* LoginViewController.swift in Sources */,
+				53D85DE7277881FD00D11B72 /* ChatViewController.swift in Sources */,
 				53E8739327707D5D0012B8E7 /* SignUpViewController.swift in Sources */,
 				53E8739127707CA20012B8E7 /* Constants.swift in Sources */,
 				53F338FB2770EA550087EEEB /* NewPostVC.swift in Sources */,
@@ -232,6 +243,7 @@
 				532272A7276F1EDB00F05437 /* AppDelegate.swift in Sources */,
 				53F338F62770E13C0087EEEB /* Post.swift in Sources */,
 				53E8738F27705A990012B8E7 /* Utilities.swift in Sources */,
+				53D85DEB2778893500D11B72 /* MessageCell.swift in Sources */,
 				532272A9276F1EDB00F05437 /* SceneDelegate.swift in Sources */,
 				539A460C2774F2AA00DE001F /* HomeViewController.swift in Sources */,
 				539A45FD2774E3D800DE001F /* CommentCell.swift in Sources */,

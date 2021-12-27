@@ -21,11 +21,8 @@ class ShadowView: UIView {
   func setupShadow(){
     self.layer.shadowColor = UIColor.gray.cgColor
     self.layer.shadowOpacity = 0.3
-    // مقدار انزياح الظل
     self.layer.shadowOffset = CGSize(width: 0, height: 10)
-    // توزيع الظل
     self.layer.shadowRadius = 10
-    // شكل الفيو كامل
     self.layer.cornerRadius = 10
   }
 
