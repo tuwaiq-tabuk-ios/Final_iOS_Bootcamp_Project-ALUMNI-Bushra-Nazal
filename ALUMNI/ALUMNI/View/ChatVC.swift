@@ -7,9 +7,9 @@
 
 import UIKit
 import Firebase
-class ChatViewController: UIViewController {
+class ChatVC: UIViewController {
 
-  @IBOutlet weak var senderEmail: UILabel!
+ 
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextField: UITextField!
   
@@ -19,12 +19,15 @@ class ChatViewController: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
      loadData()
-        // Do any additional setup after loading the view.
+    messageTableView.delegate = self
+    messageTableView.dataSource = self
+   
     }
     
   func loadData(){
-    db.collection("Messges").getDocuments { (querySnapshot, error) in
+    db.collection("Messges").order(by: "time").addSnapshotListener { (querySnapshot, error) in
       if let snapchotDoc = querySnapshot?.documents {
+        self.messages = []
         for doc in snapchotDoc {
         let data = doc.data()
           if let messageSender = data["sender"] as? String,
@@ -32,12 +35,14 @@ class ChatViewController: UIViewController {
             let newMessage = Messages(sender: messageSender, body: messageText)
             
             self.messages.append(newMessage)
+            DispatchQueue.main.async {
+              self.messageTableView.reloadData()
           }
         }
       }
     }
   }
- 
+  }
   
   @IBAction func sendButtonPressed(_ sender: Any) {
     if let messageText = messageTextField.text,
@@ -45,7 +50,8 @@ class ChatViewController: UIViewController {
       
       db.collection("Messges").addDocument(data: [
         "sender" : messageSender,
-        "text": messageText
+        "text": messageText,
+        "time": Date().timeIntervalSince1970
       ]) {(error) in
         if let err = error {
           print(err)
@@ -62,7 +68,7 @@ class ChatViewController: UIViewController {
   }
 }
 
-extension ChatViewController: UITableViewDataSource,UITableViewDelegate{
+extension ChatVC: UITableViewDataSource,UITableViewDelegate{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return messages.count
   }
@@ -82,5 +88,8 @@ extension ChatViewController: UITableViewDataSource,UITableViewDelegate{
     return cell
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 50
+  }
   
 }

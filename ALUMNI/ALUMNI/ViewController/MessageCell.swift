@@ -32,11 +32,11 @@ class MessageCell: UITableViewCell {
     
     switch sender {
     case .me:
-      backGroundColor = .white
+      backGroundColor = .gray
       messageBubble.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMinXMaxYCorner,.layerMinXMaxYCorner]
       textLabel?.textAlignment = .right
     case .other:
-      backGroundColor = .white
+      backGroundColor = .gray
       messageBubble.layer.maskedCorners = [.layerMaxXMaxYCorner,.layerMaxXMaxYCorner,.layerMaxXMinYCorner]
       textLabel?.textAlignment = .left
     default:

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class postDetailsVC: UIViewController {
+class PostDetailsVC: UIViewController {
  
     
     var post: Post!
@@ -17,7 +17,6 @@ class postDetailsVC: UIViewController {
     // MARK: OUTLETS
     
     @IBOutlet weak var commentTableView: UITableView!
-    
     @IBOutlet weak var numberOfLikesLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var postTextLabel: UILabel!
@@ -42,7 +41,7 @@ class postDetailsVC: UIViewController {
 
 
 
-extension postDetailsVC: UITableViewDelegate, UITableViewDataSource {
+extension PostDetailsVC: UITableViewDelegate, UITableViewDataSource {
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  return 1
 //  comments.count
