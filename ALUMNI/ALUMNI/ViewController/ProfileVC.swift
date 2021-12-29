@@ -10,12 +10,20 @@ import UIKit
 
 class ProfileVC: UIViewController {
 
-  @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var profileImageView: UIImageView!
-  @IBOutlet weak var emailLabel: UILabel!
-  @IBOutlet weak var phoneLabel: UILabel!
-  @IBOutlet weak var countryLabel: UILabel!
-  @IBOutlet weak var genderLabel: UILabel!
+  @IBOutlet weak var scrollBottom: NSLayoutConstraint!
+  
+  @IBOutlet weak var profileImage: UIImageView!
+  @IBOutlet weak var firstNameTextField: UITextField!
+  @IBOutlet weak var lastNameTextField: UITextField!
+  @IBOutlet weak var emailTextField: UITextField!
+  @IBOutlet weak var mobileTextField: UITextField!
+  @IBOutlet weak var githubTextField: UITextField!
+  @IBOutlet weak var preferedLanguage: UITextField!
+  @IBOutlet weak var experianceYearsTextField: UITextField!
+  @IBOutlet weak var descriptionTextView: UITextView!
+  @IBOutlet weak var descriptionContainerView: UIView!
+  
+  @IBOutlet weak var editButton: UIButton!
   
   
   

@@ -11,11 +11,8 @@ import FirebaseAuth
 class LoginVC: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {

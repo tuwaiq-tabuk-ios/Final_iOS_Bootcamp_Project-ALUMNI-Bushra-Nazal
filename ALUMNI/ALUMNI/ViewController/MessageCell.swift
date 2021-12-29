@@ -22,6 +22,17 @@ class MessageCell: UITableViewCell {
         // Configure the view for the selected state
     }
   
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
+    messageBubble.frame
+    = messageBubble.frame.inset(by: UIEdgeInsets(top: 5,
+                                                 left: 10,
+                                                 bottom: 5,
+                                                 right: 10))
+  }
+  
+  
   enum sender {
     case me
     case other
@@ -44,7 +55,7 @@ class MessageCell: UITableViewCell {
     }
     
     messageBubble.backgroundColor = backGroundColor
-    messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 2.5
+    messageBubble.layer.cornerRadius = 30
     messageBubble.layer.shadowOpacity = 0.1
   }
 }

@@ -7,9 +7,10 @@
 
 import UIKit
 import Firebase
+
+
 class ChatVC: UIViewController {
 
- 
   @IBOutlet weak var messageTableView: UITableView!
   @IBOutlet weak var messageTextField: UITextField!
   
@@ -89,7 +90,7 @@ extension ChatVC: UITableViewDataSource,UITableViewDelegate{
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 50
+    return 60
   }
   
 }
