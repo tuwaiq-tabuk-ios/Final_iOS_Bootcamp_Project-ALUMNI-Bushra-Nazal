@@ -78,6 +78,21 @@
             </objects>
             <point key="canvasLocation" x="869.56521739130437" y="137.94642857142856"/>
         </scene>
+        <!--User Login ValidationVC-->
+        <scene sceneID="eso-TP-S9U">
+            <objects>
+                <viewController storyboardIdentifier="validationVC" id="7yz-3d-Fbb" customClass="UserLoginValidationVC" customModule="ALUMNI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kbr-OJ-KnE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EHm-SD-swS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1G-Rr-uZK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-928" y="139"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ewl-h1-nOx">
             <objects>
@@ -806,76 +821,77 @@
                     <connections>
                         <outlet property="postsTableView" destination="QOx-KX-Pcd" id="f3Q-Ik-0vD"/>
                         <outlet property="searchBar" destination="84L-1h-DWI" id="0Y5-RJ-WzX"/>
-                        <segue destination="PaP-qU-TSy" kind="show" identifier="newPost" id="cFz-Ne-jPG"/>
+                        <segue destination="aeC-yH-kpe" kind="show" identifier="newPost" id="cVC-fh-M3j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3E-7f-gIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6101" y="33"/>
+            <point key="canvasLocation" x="6254" y="33"/>
         </scene>
         <!--New Post-->
-        <scene sceneID="V7E-iv-LFQ">
+        <scene sceneID="xOX-nQ-wvn">
             <objects>
-                <viewController id="PaP-qU-TSy" customClass="NewPostVC" customModule="ALUMNI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8JT-tu-ZdG">
+                <viewController id="aeC-yH-kpe" customClass="NewPostVC" customModule="ALUMNI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pKl-Hx-bEa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d9V-NL-vfN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26B-8y-EGu">
                                 <rect key="frame" x="20" y="308" width="374" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="96E-Re-xRu"/>
+                                    <constraint firstAttribute="height" constant="180" id="ezM-GA-5J9"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDq-Oe-aoZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9EQ-ix-snK">
                                 <rect key="frame" x="20" y="168" width="374" height="120"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Post" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iEO-Zr-blZ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="post here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dbq-Fb-rXD">
                                         <rect key="frame" x="5" y="5" width="364" height="110"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iEO-Zr-blZ" secondAttribute="trailing" constant="5" id="2nD-7W-M2I"/>
-                                    <constraint firstItem="iEO-Zr-blZ" firstAttribute="top" secondItem="FDq-Oe-aoZ" secondAttribute="top" constant="5" id="GL6-AA-SGn"/>
-                                    <constraint firstItem="iEO-Zr-blZ" firstAttribute="leading" secondItem="FDq-Oe-aoZ" secondAttribute="leading" constant="5" id="Q0C-i1-OfD"/>
-                                    <constraint firstAttribute="bottom" secondItem="iEO-Zr-blZ" secondAttribute="bottom" constant="5" id="cNp-vL-ZL1"/>
-                                    <constraint firstAttribute="height" constant="120" id="ur7-cX-pHM"/>
+                                    <constraint firstAttribute="bottom" secondItem="dbq-Fb-rXD" secondAttribute="bottom" constant="5" id="6cN-HM-1GJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="Uh7-hm-ckD"/>
+                                    <constraint firstAttribute="trailing" secondItem="dbq-Fb-rXD" secondAttribute="trailing" constant="5" id="Y1u-qw-Og5"/>
+                                    <constraint firstItem="dbq-Fb-rXD" firstAttribute="leading" secondItem="9EQ-ix-snK" secondAttribute="leading" constant="5" id="eWO-iP-sbc"/>
+                                    <constraint firstItem="dbq-Fb-rXD" firstAttribute="top" secondItem="9EQ-ix-snK" secondAttribute="top" constant="5" id="fWc-Af-U4E"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="5Iy-aW-hLg"/>
+                        <viewLayoutGuide key="safeArea" id="C6U-Vw-MYu"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="d9V-NL-vfN" firstAttribute="leading" secondItem="5Iy-aW-hLg" secondAttribute="leading" constant="20" id="Hcc-2e-8xb"/>
-                            <constraint firstItem="5Iy-aW-hLg" firstAttribute="trailing" secondItem="d9V-NL-vfN" secondAttribute="trailing" constant="20" id="OhC-7A-DMk"/>
-                            <constraint firstItem="FDq-Oe-aoZ" firstAttribute="top" secondItem="5Iy-aW-hLg" secondAttribute="top" constant="80" id="ceq-RB-U5Q"/>
-                            <constraint firstItem="5Iy-aW-hLg" firstAttribute="trailing" secondItem="FDq-Oe-aoZ" secondAttribute="trailing" constant="20" id="m0t-gs-BGb"/>
-                            <constraint firstItem="FDq-Oe-aoZ" firstAttribute="leading" secondItem="5Iy-aW-hLg" secondAttribute="leading" constant="20" id="nii-oQ-KrK"/>
-                            <constraint firstItem="d9V-NL-vfN" firstAttribute="top" secondItem="FDq-Oe-aoZ" secondAttribute="bottom" constant="20" id="tPg-Mx-1Pi"/>
+                            <constraint firstItem="26B-8y-EGu" firstAttribute="leading" secondItem="C6U-Vw-MYu" secondAttribute="leading" constant="20" id="3gu-ZU-lRR"/>
+                            <constraint firstItem="26B-8y-EGu" firstAttribute="top" secondItem="9EQ-ix-snK" secondAttribute="bottom" constant="20" id="5Yy-Wk-8Nl"/>
+                            <constraint firstItem="9EQ-ix-snK" firstAttribute="leading" secondItem="C6U-Vw-MYu" secondAttribute="leading" constant="20" id="B8G-hx-ENc"/>
+                            <constraint firstItem="C6U-Vw-MYu" firstAttribute="trailing" secondItem="9EQ-ix-snK" secondAttribute="trailing" constant="20" id="KvG-Uw-6RG"/>
+                            <constraint firstItem="C6U-Vw-MYu" firstAttribute="trailing" secondItem="26B-8y-EGu" secondAttribute="trailing" constant="20" id="N6H-3L-jc7"/>
+                            <constraint firstItem="9EQ-ix-snK" firstAttribute="top" secondItem="C6U-Vw-MYu" secondAttribute="top" constant="80" id="TxO-He-tgN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Post" id="aC7-qx-t7O">
-                        <barButtonItem key="rightBarButtonItem" image="paperplane.fill" catalog="system" id="z6y-Xa-mRo">
-                            <color key="tintColor" systemColor="systemTealColor"/>
+                    <navigationItem key="navigationItem" title="New Post" id="DGU-Sj-c4M">
+                        <barButtonItem key="rightBarButtonItem" image="paperplane.fill" catalog="system" id="7UR-QS-T2S">
+                            <color key="tintColor" systemColor="tintColor"/>
                             <connections>
-                                <action selector="sendPostAction:" destination="PaP-qU-TSy" id="piB-TR-wDz"/>
+                                <action selector="sendPostAction:" destination="aeC-yH-kpe" id="Edp-W9-oDe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="postContainerView" destination="FDq-Oe-aoZ" id="28W-A7-KAN"/>
-                        <outlet property="postImageView" destination="d9V-NL-vfN" id="aDg-eM-lVh"/>
-                        <outlet property="postTextView" destination="iEO-Zr-blZ" id="637-QY-og5"/>
+                        <outlet property="postContainerView" destination="9EQ-ix-snK" id="YsJ-HV-2gj"/>
+                        <outlet property="postImageView" destination="26B-8y-EGu" id="0hV-qy-qFJ"/>
+                        <outlet property="postTextView" destination="dbq-Fb-rXD" id="MU3-M0-32e"/>
+                        <outlet property="sendPostButton" destination="7UR-QS-T2S" id="tLx-JP-MOg"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tws-NX-OwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lSB-RG-6E8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6100" y="1029"/>
+            <point key="canvasLocation" x="6274" y="868"/>
         </scene>
     </scenes>
     <resources>
@@ -886,7 +902,6 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="rectangle.lefthalf.inset.fill.arrow.left" catalog="system" width="128" height="93"/>
-        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <namedColor name="BrandPurple">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -907,6 +922,9 @@
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

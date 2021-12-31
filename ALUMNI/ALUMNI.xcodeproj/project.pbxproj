@@ -16,6 +16,7 @@
 		532272BB276F1F6E00F05437 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 532272BA276F1F6E00F05437 /* GoogleService-Info.plist */; };
 		532272BE276F200300F05437 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BD276F200300F05437 /* FirebaseAuth */; };
 		532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BF276F200300F05437 /* FirebaseFirestore */; };
+		534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 534F46F9277DDD2900AFE5AA /* FirebaseStorage */; };
 		539A460C2774F2AA00DE001F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A460B2774F2AA00DE001F /* HomeVC.swift */; };
 		53D85DE12777B09200D11B72 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DE02777B09200D11B72 /* ProfileVC.swift */; };
 		53D85DE7277881FD00D11B72 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D85DE6277881FD00D11B72 /* ChatVC.swift */; };
@@ -29,6 +30,9 @@
 		53F338F62770E13C0087EEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F338F52770E13C0087EEEB /* Post.swift */; };
 		53F338F92770E4E70087EEEB /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F338F82770E4E70087EEEB /* PostCell.swift */; };
 		53F338FB2770EA550087EEEB /* NewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F338FA2770EA550087EEEB /* NewPostVC.swift */; };
+		53FEC06F277F056E0027610D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 53FEC06E277F056E0027610D /* SDWebImage */; };
+		53FEC071277F0D7B0027610D /* UserLoginValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FEC070277F0D7B0027610D /* UserLoginValidationVC.swift */; };
+		53FEC073277F16A80027610D /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FEC072277F16A80027610D /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,8 @@
 		53F338F52770E13C0087EEEB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		53F338F82770E4E70087EEEB /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		53F338FA2770EA550087EEEB /* NewPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewPostVC.swift; path = ALUMNI/Model/NewPostVC.swift; sourceTree = SOURCE_ROOT; };
+		53FEC070277F0D7B0027610D /* UserLoginValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginValidationVC.swift; sourceTree = "<group>"; };
+		53FEC072277F16A80027610D /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +67,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				532272BE276F200300F05437 /* FirebaseAuth in Frameworks */,
+				534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */,
 				532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */,
 				53D85DF0277A39A900D11B72 /* IQKeyboardManagerSwift in Frameworks */,
+				53FEC06F277F056E0027610D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,7 @@
 			children = (
 				532272A5276F1EDB00F05437 /* ALUMNI */,
 				532272A4276F1EDB00F05437 /* Products */,
+				534F46F8277DDD2900AFE5AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,10 +122,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		534F46F8277DDD2900AFE5AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		53E87398277084C30012B8E7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				53D85DF5277AEBA100D11B72 /* UIView+Ext.swift */,
+				53FEC072277F16A80027610D /* UIViewController+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -131,6 +148,7 @@
 				539A460B2774F2AA00DE001F /* HomeVC.swift */,
 				53E873942770848F0012B8E7 /* LoginVC.swift */,
 				53D85DE02777B09200D11B72 /* ProfileVC.swift */,
+				53FEC070277F0D7B0027610D /* UserLoginValidationVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -164,6 +182,8 @@
 				532272BD276F200300F05437 /* FirebaseAuth */,
 				532272BF276F200300F05437 /* FirebaseFirestore */,
 				53D85DEF277A39A900D11B72 /* IQKeyboardManagerSwift */,
+				534F46F9277DDD2900AFE5AA /* FirebaseStorage */,
+				53FEC06E277F056E0027610D /* SDWebImage */,
 			);
 			productName = ALUMNI;
 			productReference = 532272A3276F1EDB00F05437 /* ALUMNI.app */;
@@ -195,6 +215,7 @@
 			packageReferences = (
 				532272BC276F200300F05437 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				53D85DEE277A39A900D11B72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				53FEC06D277F056E0027610D /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 532272A4276F1EDB00F05437 /* Products */;
 			projectDirPath = "";
@@ -226,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53D85DE12777B09200D11B72 /* ProfileVC.swift in Sources */,
+				53FEC071277F0D7B0027610D /* UserLoginValidationVC.swift in Sources */,
 				53D85DED2778ECD200D11B72 /* Messages.swift in Sources */,
 				53E873952770848F0012B8E7 /* LoginVC.swift in Sources */,
 				53D85DE7277881FD00D11B72 /* ChatVC.swift in Sources */,
@@ -233,6 +255,7 @@
 				53F338FB2770EA550087EEEB /* NewPostVC.swift in Sources */,
 				53F338F92770E4E70087EEEB /* PostCell.swift in Sources */,
 				532272AB276F1EDB00F05437 /* WelcomeVC.swift in Sources */,
+				53FEC073277F16A80027610D /* UIViewController+Ext.swift in Sources */,
 				532272A7276F1EDB00F05437 /* AppDelegate.swift in Sources */,
 				53F338F62770E13C0087EEEB /* Post.swift in Sources */,
 				53D85DEB2778893500D11B72 /* MessageCell.swift in Sources */,
@@ -458,6 +481,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		53FEC06D277F056E0027610D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -471,10 +502,20 @@
 			package = 532272BC276F200300F05437 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		534F46F9277DDD2900AFE5AA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 532272BC276F200300F05437 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		53D85DEF277A39A900D11B72 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 53D85DEE277A39A900D11B72 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		53FEC06E277F056E0027610D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 53FEC06D277F056E0027610D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
