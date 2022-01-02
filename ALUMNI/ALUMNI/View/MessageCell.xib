@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="91" id="b23-eg-mh5" customClass="MessageCell" customModule="ALUMNI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="647" height="91"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b23-eg-mh5" id="Fzr-4x-ePg" customClass="MessageCell" customModule="ALUMNI" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="647" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zN9-pf-lip">
+                        <rect key="frame" x="603.5" y="10" width="33.5" height="71"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RGO-jP-je3">
+                                <rect key="frame" x="10" y="10" width="13.5" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40t-oE-0WN">
+                                        <rect key="frame" x="0.0" y="0.0" width="13.5" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oag-u0-1e4">
+                                        <rect key="frame" x="0.0" y="38" width="13.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="roo-Lb-MnE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="RGO-jP-je3" firstAttribute="top" secondItem="zN9-pf-lip" secondAttribute="top" constant="10" id="4YR-Bk-oB3"/>
+                            <constraint firstAttribute="trailing" secondItem="RGO-jP-je3" secondAttribute="trailing" constant="10" id="5EY-RS-OiT"/>
+                            <constraint firstItem="RGO-jP-je3" firstAttribute="leading" secondItem="zN9-pf-lip" secondAttribute="leading" constant="10" id="5iz-Ig-fdg"/>
+                            <constraint firstAttribute="bottom" secondItem="RGO-jP-je3" secondAttribute="bottom" constant="3" id="hPU-i8-rWw"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="mJf-Xu-yb7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="zN9-pf-lip" secondAttribute="trailing" constant="10" id="EEn-DG-O3F"/>
+                    <constraint firstItem="zN9-pf-lip" firstAttribute="top" secondItem="Fzr-4x-ePg" secondAttribute="top" constant="10" id="fim-um-jW7"/>
+                    <constraint firstAttribute="bottom" secondItem="zN9-pf-lip" secondAttribute="bottom" constant="10" id="gn9-jV-pGA"/>
+                    <constraint firstItem="zN9-pf-lip" firstAttribute="leading" secondItem="Fzr-4x-ePg" secondAttribute="leading" priority="250" constant="10" id="rfT-ng-x6O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="zJE-eu-IeN"/>
+            <connections>
+                <outlet property="messageLabel" destination="40t-oE-0WN" id="hmC-em-22S"/>
+                <outlet property="messageTime" destination="Oag-u0-1e4" id="urg-IT-s4A"/>
+                <outlet property="messageView" destination="zN9-pf-lip" id="m3k-tQ-SUv"/>
+                <outlet property="messageViewLeft" destination="rfT-ng-x6O" id="3tF-n1-eSy"/>
+                <outlet property="messageViewRight" destination="EEn-DG-O3F" id="Cbe-74-1Us"/>
+            </connections>
+            <point key="canvasLocation" x="458.69565217391306" y="115.51339285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

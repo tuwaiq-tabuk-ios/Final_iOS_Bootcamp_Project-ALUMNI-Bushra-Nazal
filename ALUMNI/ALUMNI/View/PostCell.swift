@@ -1,16 +1,14 @@
 //
-//  PostCellTableViewCell.swift
+//  PostCell.swift
 //  ALUMNI
 //
-//  Created by bushra nazal alatwi on 16/05/1443 AH.
+//  Created by bushra nazal alatwi on 29/05/1443 AH.
 //
 
 import UIKit
 
 class PostCell: UITableViewCell {
-  
-  
-  
+
   @IBOutlet weak var userAvatar: UIImageView!
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var postLabel: UILabel!
@@ -18,11 +16,16 @@ class PostCell: UITableViewCell {
   @IBOutlet weak var likeLabel: UILabel!
   
   @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
-
+  
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+      
+      postImage.layer.cornerRadius = 12
+      userAvatar.layer.borderColor = UIColor.lightGray.cgColor
+      userAvatar.layer.borderWidth = 1
+      userAvatar.layer.cornerRadius = 15
     }
 
-}
-
+    
+    }
+    
