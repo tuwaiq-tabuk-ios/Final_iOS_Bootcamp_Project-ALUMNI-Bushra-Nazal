@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 struct Post {
-  var image: UIImage? = nil
-  var text: String
-  
+  var postText: String?
+  var timestamp: TimeInterval?
+  var postImageUrl: String?
+  var userID: String?
+  var postDate: String?
+  var userName: String?
+  var profileImageUrl: String?  
 }
