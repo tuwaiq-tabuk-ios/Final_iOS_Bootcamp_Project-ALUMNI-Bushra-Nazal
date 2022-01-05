@@ -13,7 +13,6 @@ class PostCell: UITableViewCell {
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var postLabel: UILabel!
   @IBOutlet weak var postImage: UIImageView!
-  @IBOutlet weak var likeLabel: UILabel!
   
   @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
   

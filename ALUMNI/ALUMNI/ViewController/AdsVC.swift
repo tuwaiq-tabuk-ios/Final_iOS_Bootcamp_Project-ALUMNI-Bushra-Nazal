@@ -6,84 +6,84 @@
 //
 
 import UIKit
+import Firebase
 
 class AdsVC: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+      var ads = [Ad]()
+      let db = Firestore.firestore().collection("Ads")
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+      override func viewDidLoad() {
+          super.viewDidLoad()
 
-    // MARK: - Table view data source
+          getAllAds()
+      }
+      
+      @IBAction func newAdAction(_ sender: UIBarButtonItem) {
+          
+          //1. Create the alert controller.
+          let alert = UIAlertController(title: "Ads", message: "Enter a new Ad", preferredStyle: .alert)
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+          //2. Add the text field. You can configure it however you need.
+          alert.addTextField { (textField) in
+              textField.placeholder = "Ad Title"
+          }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+          // 3. Grab the value from the text field, and print it when the user clicks OK.
+          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+              let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+              guard let text = textField?.text, text.isEmpty == false else {return}
+              guard let userID = Auth.auth().currentUser?.uid else {return}
+              let adID = UUID().uuidString
+              self.db.document(adID).setData([
+                  "adID" : adID,
+                  "text" : text,
+                  "userID" : userID,
+                  "timestamp" : Date().timeIntervalSince1970
+              ])
+          }))
+          
+          alert.addAction(UIAlertAction(title: "Cancel", style: .cancel ))
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+          // 4. Present the alert.
+          self.present(alert, animated: true, completion: nil)
+          
+      }
+      
+      func getAllAds() {
+          db.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
+              self.ads.removeAll()
+              if let value = snapshot?.documents {
+                  for i in value {
+                      let data = i.data()
+                      let adID = data["adID"] as? String
+                      let text = data["text"] as? String
+                      let userID = data["userID"] as? String
+                      self.ads.append(Ad(adID: adID, text: text, userID: userID))
+                  }
+                  self.tableView.reloadData()
+              }
+          }
+      }
+      
 
-        // Configure the cell...
+      // MARK: - Table view data source
 
-        return cell
-    }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          // #warning Incomplete implementation, return the number of rows
+          return ads.count
+      }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+     
+      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+          cell.textLabel?.text = ads[indexPath.row].text
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+          return cell
+      }
+    
+  }

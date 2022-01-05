@@ -9,22 +9,31 @@ import UIKit
 import Firebase
 import SDWebImage
 
+
 class HomeVC: UIViewController {
   
-  var posts = [Post]()
   
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var postsTableView: UITableView!
   
+  var isSearching = false
+  var posts = [Post]()
+  var filteredPosts = [Post]()
+  var me = String()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    me = Auth.auth().currentUser!.uid
     
     postsTableView.dataSource = self
     postsTableView.delegate = self
     postsTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "Cell")
     
+    searchBar.delegate = self
+    
     createNewPostButton()
+    
     getPosts()
   }
   
@@ -32,8 +41,13 @@ class HomeVC: UIViewController {
     super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(getPosts), name: NSNotification.Name(rawValue: "reloadPosts"), object: nil)
   }
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    view.endEditing(true)
+  }
   
   @objc func getPosts(){
+    posts.removeAll()
     getAllPosts { tempPosts in
       for i in tempPosts {
         Firestore.firestore().collection("Users").document(i.userID!).getDocument { snapshot, error in
@@ -45,7 +59,7 @@ class HomeVC: UIViewController {
               if let first = firstName, let last = lastName {
                 let userName = "\(first) \(last)"
                 let profileImageUrl = imageUrl ?? ""
-                self.posts.append(Post(postText: i.postText, timestamp: i.timestamp, postImageUrl: i.postImageUrl, userID: i.userID, postDate: i.postDate, userName: userName, profileImageUrl: profileImageUrl))
+                  self.posts.append(Post(postID: i.postID ,postText: i.postText, timestamp: i.timestamp, postImageUrl: i.postImageUrl, userID: i.userID, postDate: i.postDate, userName: userName, profileImageUrl: profileImageUrl))
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                   self.posts = self.posts.sorted(by: {$0.timestamp! > $1.timestamp!})
@@ -103,38 +117,103 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if isSearching {
+      return filteredPosts.count
+    } else {
     return posts.count
   }
-  
+  }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = postsTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostCell
-    let post = posts[indexPath.row]
-    cell.postLabel.text = post.postText
-    cell.userNameLabel.text = post.userName
     
-    if let profileUrl = post.profileImageUrl {
-      cell.userAvatar.sd_setImage(with: URL(string: profileUrl)) { image, error, cache, url in
-        cell.userAvatar.image = image
+    if isSearching {
+      let post = filteredPosts[indexPath.row]
+      cell.postLabel.text = post.postText
+      cell.userNameLabel.text = post.userName
+      
+      if let profileUrl = post.profileImageUrl {
+          cell.userAvatar.sd_setImage(with: URL(string: profileUrl), placeholderImage: UIImage(systemName: "person.circle.fill"))
+      } else {
+          cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
       }
-    } else {
-      cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
-    }
-    
-    if post.postImageUrl == nil{
-      cell.imageHeightConstraint.constant = 0
-      cell.postImage.alpha = 0
-    } else {
-      if let postImageUrl = post.postImageUrl {
-        cell.imageHeightConstraint.constant = 200
-        cell.postImage.alpha = 1
-        cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
-          cell.postImage.image = image
+      
+      if post.postImageUrl == nil {
+          cell.imageHeightConstraint.constant = 0
+          cell.postImage.alpha = 0
+      } else {
+          if let postImageUrl = post.postImageUrl {
+              cell.imageHeightConstraint.constant = 200
+              cell.postImage.alpha = 1
+              cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
+                  cell.postImage.image = image
+              }
+          }
+      }
+      
+    }else{
+        let post = posts[indexPath.row]
+        cell.postLabel.text = post.postText
+        cell.userNameLabel.text = post.userName
+        
+        if let profileUrl = post.profileImageUrl {
+            cell.userAvatar.sd_setImage(with: URL(string: profileUrl)) { image, error, cache, url in
+                cell.userAvatar.image = image
+            }
+        } else {
+            cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
         }
-      }
+        
+        if post.postImageUrl == nil{
+            cell.imageHeightConstraint.constant = 0
+            cell.postImage.alpha = 0
+        } else {
+            if let postImageUrl = post.postImageUrl {
+                cell.imageHeightConstraint.constant = 200
+                cell.postImage.alpha = 1
+                cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
+                    cell.postImage.image = image
+                }
+            }
+        }
+        
     }
     return cell
   }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if isSearching {
+    performSegue(withIdentifier: "postDetails", sender: filteredPosts[indexPath.row])
+    } else {
+      performSegue(withIdentifier: "postDetails", sender: posts[indexPath.row])
+    }
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "postDetails" {
+      let destination = segue.destination as! PostDetailsVC
+      destination.post = sender as? Post
+    }
+  }
+  // deleat
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete{
+      alertAction(id: posts[indexPath.row].postID!)
+    }
+  }
+  
+  func alertAction(id: String){
+    let alert = UIAlertController(title: "Alert", message: "Are you sure!", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: { action in
+      Firestore.firestore().collection("Posts").document(id).delete()
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { action in }))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  func tableView(_tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool {
+    return posts[indexPath.row].userID == me
+  }
 }
+
+
 extension HomeVC {
   func getAllPosts(completion: @escaping ([Post])->()){
     var tempPosts = [Post]()
@@ -153,12 +232,43 @@ extension HomeVC {
             let userName = data["userName"] as? String
             let profileImageUrl = data["profileImageUrl"] as? String
             
-            tempPosts.append(Post(postText: postText, timestamp: timestamp, postImageUrl: postImageUrl, userID: userID, postDate: postDate, userName: userName, profileImageUrl: profileImageUrl))
+              tempPosts.append(Post(postID: post.documentID, postText: postText, timestamp: timestamp, postImageUrl: postImageUrl, userID: userID, postDate: postDate, userName: userName, profileImageUrl: profileImageUrl))
             
           }
           completion(tempPosts)
         }
       }
+    }
+  }
+}
+
+extension HomeVC: UISearchBarDelegate {
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    isSearching = true
+  }
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    isSearching = false
+  }
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    isSearching = false
+    searchBar.text = ""
+    view.endEditing(true)
+  }
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    isSearching = false
+  }
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    filteredPosts.removeAll()
+    if searchText == "" {
+      isSearching = false
+      self.postsTableView.reloadData()
+    }
+    else {
+      isSearching = true
+      filteredPosts = posts.filter({ post in
+        return post.postText!.lowercased().contains(searchText.lowercased())
+      })
+      self.postsTableView.reloadData()
     }
   }
 }

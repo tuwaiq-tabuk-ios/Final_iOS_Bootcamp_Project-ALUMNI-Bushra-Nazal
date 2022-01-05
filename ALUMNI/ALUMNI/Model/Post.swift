@@ -9,6 +9,7 @@
 import UIKit
 
 struct Post {
+  var postID : String?
   var postText: String?
   var timestamp: TimeInterval?
   var postImageUrl: String?

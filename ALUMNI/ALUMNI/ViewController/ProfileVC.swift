@@ -1,6 +1,6 @@
 //
 //  ProfileVC.swift
-//  Final_Project
+//  ALUMNI
 //
 //  Created by bushra nazal alatwi on 21/05/1443 AH.
 //
@@ -29,10 +29,20 @@ class ProfileVC: UIViewController {
   let db = Firestore.firestore()
   
   var imageCheck = false
+  var userID = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    if userID == "" {
+        guard let id = Auth.auth().currentUser?.uid else {return}
+        userID = id
+        editButton.isHidden = false
+    } else {
+        editButton.isHidden = true
+    }
+    
+    settingUpKeyboardNotifications() 
     getUserDate()
     
     setUpInputs(status: false)
@@ -205,7 +215,7 @@ class ProfileVC: UIViewController {
   
   
   func getUserDate() {
-    guard let userID = Auth.auth().currentUser?.uid else {return}
+    
     Firestore.firestore().collection("Users").document(userID).getDocument { snapshot, error in
       if error == nil {
         if let value = snapshot?.data() {
@@ -271,6 +281,37 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
   }
+}
+
+// Keyboard
+extension ProfileVC{
+    
+    func settingUpKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let tabbarHeight = tabBarController?.tabBar.frame.height
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.scrollBottom.constant = keyboardSize.height - tabbarHeight!
+            UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+    self.scrollBottom.constant = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 

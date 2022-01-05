@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import IQKeyboardManagerSwift
 
 class ChatVC: UIViewController {
   
@@ -22,6 +23,11 @@ class ChatVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      IQKeyboardManager.shared.enable = true
+      IQKeyboardManager.shared.enableAutoToolbar = false
+      IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+      
       guard let id = Auth.auth().currentUser?.uid else {return}
       userID = id
               
@@ -78,7 +84,7 @@ class ChatVC: UIViewController {
           "messageText" : messageText,
           "messageId" : messageId,
           "timestamp" : Date().timeIntervalSince1970,
-//          "time" : sendTime()
+          "time" : sendTime()
 
       ]) { error in
           self.messageTextView.text = ""
@@ -101,13 +107,13 @@ extension ChatVC : UITableViewDelegate, UITableViewDataSource {
       cell.messageTime.text = message.time
       
       if message.sender == userID {
-          cell.messageViewRight.priority = .defaultHigh
-          cell.messageViewLeft.priority = .defaultLow
+//          cell.messageViewRight.priority = .defaultHigh
+//          cell.messageViewLeft.priority = .defaultLow
           cell.messageTime.textAlignment = .right
           cell.messageView.backgroundColor = .systemTeal
       } else {
-          cell.messageViewRight.priority = .defaultLow
-          cell.messageViewLeft.priority = .defaultHigh
+//          cell.messageViewRight.priority = .defaultLow
+//          cell.messageViewLeft.priority = .defaultHigh
           cell.messageTime.textAlignment = .left
           cell.messageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
       }
@@ -143,3 +149,5 @@ extension ChatVC {
       }
   }
 }
+
+

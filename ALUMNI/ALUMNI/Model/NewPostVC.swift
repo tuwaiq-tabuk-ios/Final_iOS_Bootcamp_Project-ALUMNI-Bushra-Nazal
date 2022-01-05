@@ -26,7 +26,7 @@ class NewPostVC: UIViewController {
       
       postContainerView.layer.cornerRadius = 8
       postContainerView.layer.borderWidth = 1
-      postContainerView.layer.borderColor = UIColor.lightGray.cgColor
+      postContainerView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
       postImageView.layer.cornerRadius = 12
       postTextView.becomeFirstResponder()
       postTextView.delegate = self
@@ -92,14 +92,14 @@ class NewPostVC: UIViewController {
     let postData = formatter.string(from: Date())
     
     let timestamp = Date().timeIntervalSince1970
-    
-    Firestore.firestore().collection("Posts").document(UUID().uuidString).setData([
+    let postID = UUID().uuidString
+    Firestore.firestore().collection("Posts").document(postID).setData([
       "postText": postTextView.text!,
       "postImageUrl" : postImageUrl,
       "userID" : userID,
       "postDate": postData,
       "timestamp": timestamp,
-      
+      "postID" : postID
     ]){err in
       if err == nil {
         self.navigationController?.popViewController(animated: true)
