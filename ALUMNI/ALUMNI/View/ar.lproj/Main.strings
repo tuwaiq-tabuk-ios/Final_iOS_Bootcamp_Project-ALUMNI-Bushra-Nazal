@@ -1,0 +1,147 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "04H-wH-PNZ"; */
+"04H-wH-PNZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "2T6-6A-kLn"; */
+"2T6-6A-kLn.text" = "Sign Up";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "38A-uA-ynB"; */
+"38A-uA-ynB.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Github"; ObjectID = "4Nv-qb-74Q"; */
+"4Nv-qb-74Q.text" = "Github";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "76E-C9-uBX"; */
+"76E-C9-uBX.title" = " ";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "7f7-cv-nUT"; */
+"7f7-cv-nUT.text" = "Description";
+
+/* Class = "UILabel"; text = "Logn In"; ObjectID = "7fJ-Zr-GEv"; */
+"7fJ-Zr-GEv.text" = "Logn In";
+
+/* Class = "UISearchBar"; placeholder = "search ..."; ObjectID = "84L-1h-DWI"; */
+"84L-1h-DWI.placeholder" = "search ...";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "9X2-Ez-fJs"; */
+"9X2-Ez-fJs.placeholder" = "Last Name";
+
+/* Class = "UIButton"; configuration.title = "Ads"; ObjectID = "Adn-zO-wPw"; */
+"Adn-zO-wPw.configuration.title" = "Ads";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Adn-zO-wPw"; */
+"Adn-zO-wPw.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "BAo-21-QUj"; */
+"BAo-21-QUj.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "CRa-LJ-Q7L"; */
+"CRa-LJ-Q7L.placeholder" = "Password";
+
+/* Class = "UINavigationItem"; title = "New Post"; ObjectID = "DGU-Sj-c4M"; */
+"DGU-Sj-c4M.title" = "منشور جديد";
+
+/* Class = "UILabel"; text = "First"; ObjectID = "Evt-vK-KtG"; */
+"Evt-vK-KtG.text" = "First";
+
+/* Class = "UILabel"; text = "Experiance Years"; ObjectID = "F5z-f5-4xk"; */
+"F5z-f5-4xk.text" = "Experiance Years";
+
+/* Class = "UILabel"; text = "Last"; ObjectID = "IId-yX-S0i"; */
+"IId-yX-S0i.text" = "Last";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "LDm-an-nWh"; */
+"LDm-an-nWh.title" = " ";
+
+/* Class = "UINavigationItem"; title = "Courses"; ObjectID = "Lro-YN-qUh"; */
+"Lro-YN-qUh.title" = "الدورات";
+
+/* Class = "UIButton"; configuration.title = "Courses"; ObjectID = "Mge-KY-GbQ"; */
+"Mge-KY-GbQ.configuration.title" = "Courses";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Mge-KY-GbQ"; */
+"Mge-KY-GbQ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Error"; ObjectID = "Nyy-OT-KkB"; */
+"Nyy-OT-KkB.text" = "Error";
+
+/* Class = "UIButton"; configuration.title = "Edit"; ObjectID = "RKu-0J-IZl"; */
+"RKu-0J-IZl.configuration.title" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RKu-0J-IZl"; */
+"RKu-0J-IZl.normalTitle" = "تعديل";
+
+/* Class = "UITextView"; text = "comment here"; ObjectID = "SRg-66-pq9"; */
+"SRg-66-pq9.text" = "comment here";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "UnU-da-1Vp"; */
+"UnU-da-1Vp.text" = "Email";
+
+/* Class = "UITextView"; text = "Message here"; ObjectID = "VP8-NQ-jhs"; */
+"VP8-NQ-jhs.text" = "Message here";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "WKp-ey-DeB"; */
+"WKp-ey-DeB.placeholder" = "Password";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "abh-rk-be0"; */
+"abh-rk-be0.title" = " ";
+
+/* Class = "UILabel"; text = "Mobile"; ObjectID = "aia-3h-t37"; */
+"aia-3h-t37.text" = "Mobile";
+
+/* Class = "UITextView"; text = "post here"; ObjectID = "dbq-Fb-rXD"; */
+"dbq-Fb-rXD.text" = "post here";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ehO-Or-dLz"; */
+"ehO-Or-dLz.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "fHI-9O-vtc"; */
+"fHI-9O-vtc.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fRC-EH-v9f"; */
+"fRC-EH-v9f.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "g1F-98-VLQ"; */
+"g1F-98-VLQ.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "g1F-98-VLQ"; */
+"g1F-98-VLQ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Preffered Language"; ObjectID = "gCq-IQ-RUx"; */
+"gCq-IQ-RUx.text" = "Preffered Language";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "gLz-Dl-jUo"; */
+"gLz-Dl-jUo.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gLz-Dl-jUo"; */
+"gLz-Dl-jUo.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "h4i-qn-zrW"; */
+"h4i-qn-zrW.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "lsE-84-41M"; */
+"lsE-84-41M.normalTitle" = "Sign Up";
+
+/* Class = "UINavigationItem"; title = "Ads"; ObjectID = "mcN-mq-a0f"; */
+"mcN-mq-a0f.title" = "الاعلانات";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "nph-UX-ck2"; */
+"nph-UX-ck2.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "nua-DN-wiT"; */
+"nua-DN-wiT.placeholder" = "First Name";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oeM-u2-hKm"; */
+"oeM-u2-hKm.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "u8M-vL-4CY"; */
+"u8M-vL-4CY.title" = " ";
+
+/* Class = "UILabel"; text = "Error"; ObjectID = "wVu-vJ-zuK"; */
+"wVu-vJ-zuK.text" = "Error";
+
+/* Class = "UIButton"; configuration.title = "About Us"; ObjectID = "yrd-fa-Zt5"; */
+"yrd-fa-Zt5.configuration.title" = "About Us";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yrd-fa-Zt5"; */
+"yrd-fa-Zt5.normalTitle" = "Button";

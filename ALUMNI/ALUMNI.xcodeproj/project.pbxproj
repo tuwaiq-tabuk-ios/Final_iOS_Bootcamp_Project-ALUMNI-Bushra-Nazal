@@ -23,6 +23,9 @@
 		53525DF8278395AC003309F3 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53525DF6278395AC003309F3 /* CommentCell.xib */; };
 		53525DFA27841C7B003309F3 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF927841C7B003309F3 /* Ad.swift */; };
 		53525DFC27841D70003309F3 /*  Course .swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DFB27841D70003309F3 /*  Course .swift */; };
+		53525E0027861DE2003309F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53525E0227861DE2003309F3 /* Localizable.strings */; };
+		53525E0527862618003309F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53525E0727862618003309F3 /* InfoPlist.strings */; };
+		53525E0B27862D70003309F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525E0A27862D70003309F3 /* String+Ext.swift */; };
 		536EFB772781838000F53B7B /* PostDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536EFB762781838000F53B7B /* PostDetailsVC.swift */; };
 		536EFB802781879300F53B7B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536EFB7E2781879300F53B7B /* PostCell.swift */; };
 		536EFB812781879300F53B7B /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536EFB7F2781879300F53B7B /* PostCell.xib */; };
@@ -65,6 +68,12 @@
 		53525DF6278395AC003309F3 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		53525DF927841C7B003309F3 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		53525DFB27841D70003309F3 /*  Course .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Course .swift"; sourceTree = "<group>"; };
+		53525DFD27861D22003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		53525E0127861DE2003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53525E0627862618003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53525E08278629C1003309F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53525E0A27862D70003309F3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		53525E0C2786C609003309F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		536EFB762781838000F53B7B /* PostDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsVC.swift; sourceTree = "<group>"; };
 		536EFB7E2781879300F53B7B /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		536EFB7F2781879300F53B7B /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -127,10 +136,11 @@
 			children = (
 				532272A6276F1EDB00F05437 /* AppDelegate.swift */,
 				532272A8276F1EDB00F05437 /* SceneDelegate.swift */,
-				53F338F72770E1410087EEEB /* Model */,
 				53E87398277084C30012B8E7 /* Helpers */,
+				53F338F72770E1410087EEEB /* Model */,
 				53E87399277084F60012B8E7 /* ViewController */,
 				53243A58277112BF0008DB26 /* View */,
+				53525E09278629DF003309F3 /* Localizable */,
 				532272AF276F1EDD00F05437 /* Assets.xcassets */,
 				532272B1276F1EDD00F05437 /* LaunchScreen.storyboard */,
 				532272B4276F1EDD00F05437 /* Info.plist */,
@@ -162,11 +172,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		53525E09278629DF003309F3 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				53525E0727862618003309F3 /* InfoPlist.strings */,
+				53525E0227861DE2003309F3 /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		53E87398277084C30012B8E7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				53D85DF5277AEBA100D11B72 /* UIView+Ext.swift */,
 				53FEC072277F16A80027610D /* UIViewController+Ext.swift */,
+				53525E0A27862D70003309F3 /* String+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -252,6 +272,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 5322729A276F1EDB00F05437;
 			packageReferences = (
@@ -277,10 +298,12 @@
 				532272BB276F1F6E00F05437 /* GoogleService-Info.plist in Resources */,
 				536EFB812781879300F53B7B /* PostCell.xib in Resources */,
 				53525DF8278395AC003309F3 /* CommentCell.xib in Resources */,
+				53525E0027861DE2003309F3 /* Localizable.strings in Resources */,
 				536EFB8D278189AC00F53B7B /* RecentMessageCell.xib in Resources */,
 				1087A9352785754A00854435 /* MessageCell.xib in Resources */,
 				532272B0276F1EDD00F05437 /* Assets.xcassets in Resources */,
 				532272AE276F1EDB00F05437 /* Main.storyboard in Resources */,
+				53525E0527862618003309F3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +336,7 @@
 				53F338F62770E13C0087EEEB /* Post.swift in Sources */,
 				532272A9276F1EDB00F05437 /* SceneDelegate.swift in Sources */,
 				53D85DF6277AEBA100D11B72 /* UIView+Ext.swift in Sources */,
+				53525E0B27862D70003309F3 /* String+Ext.swift in Sources */,
 				539A460C2774F2AA00DE001F /* HomeVC.swift in Sources */,
 				536EFB802781879300F53B7B /* PostCell.swift in Sources */,
 				53525DFA27841C7B003309F3 /* Ad.swift in Sources */,
@@ -328,6 +352,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				532272AD276F1EDB00F05437 /* Base */,
+				53525DFD27861D22003309F3 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -340,6 +365,24 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		53525E0227861DE2003309F3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53525E0127861DE2003309F3 /* ar */,
+				53525E08278629C1003309F3 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		53525E0727862618003309F3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53525E0627862618003309F3 /* ar */,
+				53525E0C2786C609003309F3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -347,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -408,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

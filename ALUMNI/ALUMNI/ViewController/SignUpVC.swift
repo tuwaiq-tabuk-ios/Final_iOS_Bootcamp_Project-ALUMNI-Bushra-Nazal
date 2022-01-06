@@ -11,6 +11,7 @@ import Firebase
 
 class SignUpVC: UIViewController {
   
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var firstNameTextField: UITextField!
   @IBOutlet weak var lastNameTextField: UITextField!
   @IBOutlet weak var emailTextField: UITextField!
@@ -23,7 +24,7 @@ class SignUpVC: UIViewController {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    
+    translateScreen()
     setupUI()
     
   }
@@ -127,6 +128,17 @@ extension SignUpVC {
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     view.endEditing(true)
+  }
+  
+  //MARK: - Localizable
+  func translateScreen() {
+    titleLabel.text = "signUpTitle".localize()
+    firstNameTextField.placeholder = "firstName".localize()
+    lastNameTextField.placeholder = "lastName".localize()
+    emailTextField.placeholder = "email".localize()
+    passwordTextField.placeholder = "password".localize()
+    errorLabel.text = "errorSignUp".localize()
+    signUpButton.setTitle(NSLocalizedString("signUp", comment: ""), for: .normal)
   }
 }
 

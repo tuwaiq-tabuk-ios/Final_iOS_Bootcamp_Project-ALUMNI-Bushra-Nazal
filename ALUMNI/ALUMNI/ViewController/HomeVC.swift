@@ -12,7 +12,6 @@ import SDWebImage
 
 class HomeVC: UIViewController {
   
-  
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var postsTableView: UITableView!
   
@@ -23,6 +22,7 @@ class HomeVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     
     me = Auth.auth().currentUser!.uid
     
@@ -35,6 +35,8 @@ class HomeVC: UIViewController {
     createNewPostButton()
     
     getPosts()
+    
+    translateScreen()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +61,7 @@ class HomeVC: UIViewController {
               if let first = firstName, let last = lastName {
                 let userName = "\(first) \(last)"
                 let profileImageUrl = imageUrl ?? ""
-                  self.posts.append(Post(postID: i.postID ,postText: i.postText, timestamp: i.timestamp, postImageUrl: i.postImageUrl, userID: i.userID, postDate: i.postDate, userName: userName, profileImageUrl: profileImageUrl))
+                self.posts.append(Post(postID: i.postID ,postText: i.postText, timestamp: i.timestamp, postImageUrl: i.postImageUrl, userID: i.userID, postDate: i.postDate, userName: userName, profileImageUrl: profileImageUrl))
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                   self.posts = self.posts.sorted(by: {$0.timestamp! > $1.timestamp!})
@@ -81,7 +83,7 @@ class HomeVC: UIViewController {
     newPostButton.translatesAutoresizingMaskIntoConstraints = false
     newPostButton.setImage(UIImage(systemName: "plus"), for: .normal)
     newPostButton.tintColor = .white
-    newPostButton.backgroundColor = .systemTeal
+    newPostButton.backgroundColor = .systemBlue
     newPostButton.layer.cornerRadius = 25
     newPostButton.layer.zPosition = 100
     newPostButton.addTarget(self, action: #selector(newPostClicked), for: .touchUpInside)
@@ -101,7 +103,6 @@ class HomeVC: UIViewController {
   
   @IBAction func signoutAction(_ sender: UIBarButtonItem) {
     try? Auth.auth().signOut()
-    
     let vc = self.storyboard?.instantiateViewController(withIdentifier: "signInUpVC")
     vc?.modalPresentationStyle = .fullScreen
     vc?.modalTransitionStyle = .crossDissolve
@@ -114,14 +115,15 @@ class HomeVC: UIViewController {
   
 }
 
+// MARK: - Table view data source
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if isSearching {
       return filteredPosts.count
     } else {
-    return posts.count
-  }
+      return posts.count
+    }
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = postsTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostCell
@@ -132,56 +134,56 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
       cell.userNameLabel.text = post.userName
       
       if let profileUrl = post.profileImageUrl {
-          cell.userAvatar.sd_setImage(with: URL(string: profileUrl), placeholderImage: UIImage(systemName: "person.circle.fill"))
+        cell.userAvatar.sd_setImage(with: URL(string: profileUrl), placeholderImage: UIImage(systemName: "person.circle.fill"))
       } else {
-          cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
+        cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
       }
       
       if post.postImageUrl == nil {
-          cell.imageHeightConstraint.constant = 0
-          cell.postImage.alpha = 0
+        cell.imageHeightConstraint.constant = 0
+        cell.postImage.alpha = 0
       } else {
-          if let postImageUrl = post.postImageUrl {
-              cell.imageHeightConstraint.constant = 200
-              cell.postImage.alpha = 1
-              cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
-                  cell.postImage.image = image
-              }
+        if let postImageUrl = post.postImageUrl {
+          cell.imageHeightConstraint.constant = 200
+          cell.postImage.alpha = 1
+          cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
+            cell.postImage.image = image
           }
+        }
       }
       
     }else{
-        let post = posts[indexPath.row]
-        cell.postLabel.text = post.postText
-        cell.userNameLabel.text = post.userName
-        
-        if let profileUrl = post.profileImageUrl {
-            cell.userAvatar.sd_setImage(with: URL(string: profileUrl)) { image, error, cache, url in
-                cell.userAvatar.image = image
-            }
-        } else {
-            cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
+      let post = posts[indexPath.row]
+      cell.postLabel.text = post.postText
+      cell.userNameLabel.text = post.userName
+      
+      if let profileUrl = post.profileImageUrl {
+        cell.userAvatar.sd_setImage(with: URL(string: profileUrl)) { image, error, cache, url in
+          cell.userAvatar.image = image
         }
-        
-        if post.postImageUrl == nil{
-            cell.imageHeightConstraint.constant = 0
-            cell.postImage.alpha = 0
-        } else {
-            if let postImageUrl = post.postImageUrl {
-                cell.imageHeightConstraint.constant = 200
-                cell.postImage.alpha = 1
-                cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
-                    cell.postImage.image = image
-                }
-            }
+      } else {
+        cell.userAvatar.image = UIImage(systemName: "person.circle.fill")
+      }
+      
+      if post.postImageUrl == nil{
+        cell.imageHeightConstraint.constant = 0
+        cell.postImage.alpha = 0
+      } else {
+        if let postImageUrl = post.postImageUrl {
+          cell.imageHeightConstraint.constant = 200
+          cell.postImage.alpha = 1
+          cell.postImage.sd_setImage(with: URL(string: postImageUrl)) { image, error, cache, url in
+            cell.postImage.image = image
+          }
         }
-        
+      }
+      
     }
     return cell
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if isSearching {
-    performSegue(withIdentifier: "postDetails", sender: filteredPosts[indexPath.row])
+      performSegue(withIdentifier: "postDetails", sender: filteredPosts[indexPath.row])
     } else {
       performSegue(withIdentifier: "postDetails", sender: posts[indexPath.row])
     }
@@ -200,11 +202,11 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
   }
   
   func alertAction(id: String){
-    let alert = UIAlertController(title: "Alert", message: "Are you sure!", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: { action in
+    let alert = UIAlertController(title: "Alert".localize(), message: "Are you sure!".localize(), preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok".localize(), style: .destructive, handler: { action in
       Firestore.firestore().collection("Posts").document(id).delete()
     }))
-    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { action in }))
+    alert.addAction(UIAlertAction(title: "Cancel".localize(), style: .default, handler: { action in }))
     self.present(alert, animated: true, completion: nil)
   }
   
@@ -232,7 +234,7 @@ extension HomeVC {
             let userName = data["userName"] as? String
             let profileImageUrl = data["profileImageUrl"] as? String
             
-              tempPosts.append(Post(postID: post.documentID, postText: postText, timestamp: timestamp, postImageUrl: postImageUrl, userID: userID, postDate: postDate, userName: userName, profileImageUrl: profileImageUrl))
+            tempPosts.append(Post(postID: post.documentID, postText: postText, timestamp: timestamp, postImageUrl: postImageUrl, userID: userID, postDate: postDate, userName: userName, profileImageUrl: profileImageUrl))
             
           }
           completion(tempPosts)
@@ -270,5 +272,9 @@ extension HomeVC: UISearchBarDelegate {
       })
       self.postsTableView.reloadData()
     }
+  }
+  //MARK: - Localizable
+  func translateScreen() {
+    searchBar.placeholder = "search".localize()
   }
 }
