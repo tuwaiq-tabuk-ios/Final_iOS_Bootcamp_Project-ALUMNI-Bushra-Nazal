@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  ALUMNI
+
+  Created by bushra nazal alatwi on 02/06/1443 AH.
+  
+*/
+
+// WelcomeVC
+"login" = "تسجيل الدخول";
+"signUp"= "انشاء حساب";
+
+//LoginVC
+"loginTitle" = "تسجيل الدخول";
+"email" = "الايميل";
+"password" = "كلمة السر";
+"login" = "تسجيل الدخول";
+
+// SignUpVC
+"signUpTitle" = "انشاء حساب";
+"firstName" = "الاسم الاول";
+"lastName" = "الاسم الاخير";
+"email" = "الايميل";
+"password" = "كلمة السر";
+"signUp" = "انشاء حساب";
+
+//HomeVC
+"search" = "بحث";
+"Alert" = "تنبية";
+"Are you sure!" = "هل انت متأكد انك تريد الحذف";
+
+
+
+//NewPostVC
+"post here" = "اكتب هنا";
+
+//PostDetailsVC
+"comment here" = "اكتب ردك";
+
+// ProfileVC
+"firstName" = "الاسم الاول";
+"lastName" = "الاسم الاخير";
+"email" = "الايميل";
+"mobile" = "رقم الجوال";
+"github" = "github";
+"preferedLanguage" = "لغة البرمجة المفضلة";
+"experianceYears" = "سنوات الخبرة";
+"description" = "نبذة عنك ";
+"Save" = "حفظ";
+"Edit" = "تعديل";
+"Cancel" = "الغاء";
+"none" = "لاشئ";
+
+//ChatVC
+"Message here" = "اكتب رسالتك";
+
+//MoreVC
+"courses" = "الدورات";
+"ads" = "الاعلانات";
+"aboutUs" = "حول البرنامج";
+
+//AdsVC
+"Ads" = "اعلان جديد";
+"Enter a new Ad" = "ادخل الاعلان الجديد";
+"Ad Title" = "عنوان الاعلان";
+"OK" = "موافق";
+
+//CoursesVC
+"Course" = "دورة جديدة";
+"Enter a new course" = "ادخل الدورة الجديدة";
+"Course Title" = "عنوان الدورة";
+

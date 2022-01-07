@@ -5,10 +5,11 @@
 //  Created by bushra nazal alatwi on 16/05/1443 AH.
 //
 
-import Foundation
+
 import UIKit
 
 struct Post {
+  var postID : String?
   var postText: String?
   var timestamp: TimeInterval?
   var postImageUrl: String?

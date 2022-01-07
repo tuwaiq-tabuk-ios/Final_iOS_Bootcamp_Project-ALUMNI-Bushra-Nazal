@@ -1,6 +1,6 @@
 //
 //  ProfileVC.swift
-//  Final_Project
+//  ALUMNI
 //
 //  Created by bushra nazal alatwi on 21/05/1443 AH.
 //
@@ -12,27 +12,44 @@ import SDWebImage
 class ProfileVC: UIViewController {
   
   @IBOutlet weak var scrollBottom: NSLayoutConstraint!
-  
   @IBOutlet weak var profileImage: UIImageView!
   @IBOutlet weak var firstNameTextField: UITextField!
+  @IBOutlet weak var firstNameLabel: UILabel!
   @IBOutlet weak var lastNameTextField: UITextField!
+  @IBOutlet weak var lastNameLabel: UILabel!
   @IBOutlet weak var emailTextField: UITextField!
+  @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var mobileLabel: UILabel!
   @IBOutlet weak var mobileTextField: UITextField!
   @IBOutlet weak var githubTextField: UITextField!
+  @IBOutlet weak var githubLabel: UILabel!
   @IBOutlet weak var preferedLanguage: UITextField!
+  @IBOutlet weak var preferedLanguageLabel: UILabel!
   @IBOutlet weak var experianceYearsTextField: UITextField!
+  @IBOutlet weak var experianceYearsLabel: UILabel!
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var descriptionContainerView: UIView!
-  
+  @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var editButton: UIButton!
   
   let db = Firestore.firestore()
   
   var imageCheck = false
+  var userID = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    if userID == "" {
+      guard let id = Auth.auth().currentUser?.uid else {return}
+      userID = id
+      editButton.isHidden = false
+    } else {
+      editButton.isHidden = true
+    }
+    
+    translateScreen()
+    settingUpKeyboardNotifications() 
     getUserDate()
     
     setUpInputs(status: false)
@@ -73,7 +90,7 @@ class ProfileVC: UIViewController {
   @IBAction func editButtonAction(_ sender: UIButton) {
     
     if toggleButton {
-      editButton.setTitle("Save", for: .normal)
+      editButton.setTitle("Save".localize(), for: .normal)
       profileImage.isUserInteractionEnabled = true
       
       profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageAction)))
@@ -90,31 +107,31 @@ class ProfileVC: UIViewController {
       if let mobile = mobileTextField.text, mobile.isEmpty == false  {
         mobileTextField.text = mobile
       } else {
-        mobileTextField.text = "none"
+        mobileTextField.text = "none".localize()
       }
       
       if let github = githubTextField.text, github.isEmpty == false  {
         githubTextField.text = github
       } else {
-        githubTextField.text = "none"
+        githubTextField.text = "none".localize()
       }
       
       if let language = preferedLanguage.text, language.isEmpty == false  {
         preferedLanguage.text = language
       } else {
-        preferedLanguage.text = "none"
+        preferedLanguage.text = "none".localize()
       }
       
       if let experiance = experianceYearsTextField.text, experiance.isEmpty == false  {
         experianceYearsTextField.text = experiance
       } else {
-        experianceYearsTextField.text = "none"
+        experianceYearsTextField.text = "none".localize()
       }
       
       if let description = descriptionTextView.text, description.isEmpty == false  {
         descriptionTextView.text = description
       } else {
-        descriptionTextView.text = "none"
+        descriptionTextView.text = "none".localize()
       }
       
       guard let userID = Auth.auth().currentUser?.uid else {return}
@@ -143,7 +160,7 @@ class ProfileVC: UIViewController {
                   "experianceYears" : experianceYearsTextField.text!
                 ]) { err in
                   if err == nil {
-                    self.editButton.setTitle("Edit", for: .normal)
+                    self.editButton.setTitle("Edit".localize(), for: .normal)
                     self.editButton.isEnabled = true
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadPosts"), object: nil, userInfo: nil)
                     finishLoadingView()
@@ -171,7 +188,7 @@ class ProfileVC: UIViewController {
         
         db.collection("Users").document(userID).updateData(profileData) { [self] err in
           if err == nil {
-            self.editButton.setTitle("Edit", for: .normal)
+            self.editButton.setTitle("Edit".localize(), for: .normal)
             self.editButton.isEnabled = true
             finishLoadingView()
             self.tabBarController?.selectedIndex = 0
@@ -205,7 +222,7 @@ class ProfileVC: UIViewController {
   
   
   func getUserDate() {
-    guard let userID = Auth.auth().currentUser?.uid else {return}
+    
     Firestore.firestore().collection("Users").document(userID).getDocument { snapshot, error in
       if error == nil {
         if let value = snapshot?.data() {
@@ -229,10 +246,22 @@ class ProfileVC: UIViewController {
     }
   }
   
-  
+  //MARK: - Localizable
+  func translateScreen() {
+    firstNameLabel.text = "firstName".localize()
+    lastNameLabel.text = "lastName".localize()
+    emailLabel.text = "email".localize()
+    mobileLabel.text = "mobile".localize()
+    githubLabel.text = "github".localize()
+    preferedLanguageLabel.text = "preferedLanguage".localize()
+    experianceYearsLabel.text = "experianceYears".localize()
+    descriptionLabel.text = "description".localize()
+    
+  }
 }
 
 
+//MARK: - Image
 extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   @objc func imageAction() {
     let imagePickerController = UIImagePickerController()
@@ -272,3 +301,39 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     picker.dismiss(animated: true, completion: nil)
   }
 }
+
+//MARK: - Keyboard
+
+extension ProfileVC{
+  func settingUpKeyboardNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+  }
+  
+  @objc func keyboardWillShow(notification: NSNotification) {
+    let tabbarHeight = tabBarController?.tabBar.frame.height
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+      self.scrollBottom.constant = keyboardSize.height - tabbarHeight!
+      UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+        self.view.layoutIfNeeded()
+      }, completion: nil)
+    }
+  }
+  
+  @objc func keyboardWillHide(notification: NSNotification) {
+    self.scrollBottom.constant = 0
+    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    view.endEditing(true)
+  }
+}
+
+
+
+
+

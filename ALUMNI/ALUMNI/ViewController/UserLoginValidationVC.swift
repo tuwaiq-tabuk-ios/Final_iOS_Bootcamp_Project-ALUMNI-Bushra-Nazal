@@ -14,7 +14,7 @@ class UserLoginValidationVC: UIViewController {
     super.viewDidLoad()
     
     if Auth.auth().currentUser?.uid == nil {
-//      go to singIn
+      //      go to singIn
       let vc = self.storyboard?.instantiateViewController(withIdentifier: "signInUpVC")
       vc?.modalPresentationStyle = .fullScreen
       vc?.modalTransitionStyle = .crossDissolve
@@ -22,7 +22,7 @@ class UserLoginValidationVC: UIViewController {
         self.present(vc!, animated: true, completion: nil)
       }
     } else {
-//       go to HomeVC
+      //       go to HomeVC
       let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
       vc?.modalPresentationStyle = .fullScreen
       vc?.modalTransitionStyle = .crossDissolve

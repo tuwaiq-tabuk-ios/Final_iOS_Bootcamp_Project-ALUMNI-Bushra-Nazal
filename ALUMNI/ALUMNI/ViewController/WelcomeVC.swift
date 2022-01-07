@@ -8,17 +8,18 @@
 import UIKit
 
 class WelcomeVC: UIViewController {
-    
+  
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      setupUI()
-  
-}
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    translateScreen()
+    setupUI()
+    
+  }
   
   
   func setupUI() {
@@ -28,11 +29,19 @@ class WelcomeVC: UIViewController {
     var charIndex = 0.0
     let titleText = "ALUMNI"
     for letter in titleText {
-        Timer.scheduledTimer(withTimeInterval: 0.4 * charIndex, repeats: false) { (timer) in
-            self.titleLabel.text?.append(letter)
-        }
-        charIndex += 1
+      Timer.scheduledTimer(withTimeInterval: 0.4 * charIndex, repeats: false) { (timer) in
+        self.titleLabel.text?.append(letter)
+      }
+      charIndex += 1
     }
-   
+    
   }
+  //MARK: - Localizable
+  func translateScreen() {
+    signUpButton.setTitle(NSLocalizedString("signUp", comment: ""), for: .normal)
+    loginButton.setTitle(NSLocalizedString("login", comment: ""), for: .normal)
+    
   }
+}
+
+

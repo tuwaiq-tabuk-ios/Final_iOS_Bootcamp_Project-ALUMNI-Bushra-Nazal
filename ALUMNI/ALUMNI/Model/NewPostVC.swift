@@ -10,7 +10,7 @@ import Firebase
 
 
 class NewPostVC: UIViewController {
-
+  
   @IBOutlet weak var postContainerView : UIView!
   @IBOutlet weak var postTextView : UITextView!
   @IBOutlet weak var postImageView : UIImageView!
@@ -19,21 +19,23 @@ class NewPostVC: UIViewController {
   var postCheck = false
   var imageCheck = false
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-      self.sendPostButton.isEnabled = false
-      
-      postContainerView.layer.cornerRadius = 8
-      postContainerView.layer.borderWidth = 1
-      postContainerView.layer.borderColor = UIColor.lightGray.cgColor
-      postImageView.layer.cornerRadius = 12
-      postTextView.becomeFirstResponder()
-      postTextView.delegate = self
-      
-      toolBar()
-        
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    self.sendPostButton.isEnabled = false
+    
+    postContainerView.layer.cornerRadius = 8
+    postContainerView.layer.borderWidth = 1
+    postContainerView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+    postImageView.layer.cornerRadius = 12
+    postTextView.becomeFirstResponder()
+    postTextView.delegate = self
+    
+    toolBar()
+    
+    translateScreen()
+    
+  }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     view.endEditing(true)
@@ -58,32 +60,32 @@ class NewPostVC: UIViewController {
   }
   
   @IBAction func sendPostAction(_ sender: UIBarButtonItem) {
-
+    
     if imageCheck { // save postText and postImage
-
-//       save postImage to storage
+      
+      //       save postImage to storage
       let storageRef = Storage.storage().reference().child(UUID().uuidString)
       guard let itemImageData = postImageView.image?.pngData() else {return}
-
-              storageRef.putData(itemImageData, metadata: nil) {meta, error in
-                if error == nil {
-                  storageRef.downloadURL { [self] url, error in
-                    if error == nil {
-                      if let imageUrl = url?.absoluteString {
-                        // save to firestore
-                        savePostData(postImageUrl: imageUrl)
-                      }
-                    }
-
-                  }
-                }
-    }
-
+      
+      storageRef.putData(itemImageData, metadata: nil) {meta, error in
+        if error == nil {
+          storageRef.downloadURL { [self] url, error in
+            if error == nil {
+              if let imageUrl = url?.absoluteString {
+                // save to firestore
+                savePostData(postImageUrl: imageUrl)
+              }
+            }
+            
+          }
+        }
+      }
+      
     } else {
       // save postText only
       savePostData(postImageUrl: nil)
     }
-}
+  }
   func savePostData(postImageUrl: String?){
     guard let userID = Auth.auth().currentUser?.uid else {return}
     
@@ -92,22 +94,23 @@ class NewPostVC: UIViewController {
     let postData = formatter.string(from: Date())
     
     let timestamp = Date().timeIntervalSince1970
-    
-    Firestore.firestore().collection("Posts").document(UUID().uuidString).setData([
+    let postID = UUID().uuidString
+    Firestore.firestore().collection("Posts").document(postID).setData([
       "postText": postTextView.text!,
       "postImageUrl" : postImageUrl,
       "userID" : userID,
       "postDate": postData,
       "timestamp": timestamp,
-      
+      "postID" : postID
     ]){err in
       if err == nil {
         self.navigationController?.popViewController(animated: true)
+      }
     }
   }
 }
-    }
-                                                       
+
+// MARK: - Image
 extension NewPostVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
   @objc func imageAction(){
     view.endEditing(true)
@@ -173,4 +176,10 @@ extension NewPostVC {
       textView.textColor = .lightGray
     }
   }
+  
+  //MARK: - Localizable
+  func translateScreen() {
+    postTextView.text = "post here".localize()
+  }
+  
 }

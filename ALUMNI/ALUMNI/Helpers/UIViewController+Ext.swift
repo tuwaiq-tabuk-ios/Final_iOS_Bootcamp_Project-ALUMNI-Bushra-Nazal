@@ -20,3 +20,19 @@ extension UIViewController : UITextViewDelegate {
         textView.text = trimmed
     }
 }
+
+extension UIViewController {
+    func sendDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        let stringDate = formatter.string(from: Date())
+        return stringDate
+    }
+    
+    func sendTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        let stringDate = formatter.string(from: Date())
+        return stringDate
+    }
+}
