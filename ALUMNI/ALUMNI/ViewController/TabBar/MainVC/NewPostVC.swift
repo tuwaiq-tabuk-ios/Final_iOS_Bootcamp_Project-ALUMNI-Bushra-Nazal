@@ -11,6 +11,7 @@ import Firebase
 
 class NewPostVC: UIViewController {
   
+  //MARK: - IBOutlets
   @IBOutlet weak var postContainerView : UIView!
   @IBOutlet weak var postTextView : UITextView!
   @IBOutlet weak var postImageView : UIImageView!
@@ -76,11 +77,9 @@ class NewPostVC: UIViewController {
                 savePostData(postImageUrl: imageUrl)
               }
             }
-            
           }
         }
       }
-      
     } else {
       // save postText only
       savePostData(postImageUrl: nil)

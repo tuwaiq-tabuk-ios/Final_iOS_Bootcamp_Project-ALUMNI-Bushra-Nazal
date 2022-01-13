@@ -9,11 +9,14 @@ import UIKit
 
 class MoreVC: UIViewController {
   
+  //MARK: - IBOutlets
   @IBOutlet weak var coursesButton: UIButton!
   @IBOutlet weak var adsButton: UIButton!
   @IBOutlet weak var aboutUsButton: UIButton!
   
   
+  
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     

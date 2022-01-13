@@ -8,7 +8,8 @@
 import UIKit
 
 class RecentMessageCell: UITableViewCell {
-
+  
+  //MARK: - IBOutlets
   @IBOutlet weak var usernameLabel : UILabel!
   @IBOutlet weak var profileImage : UIImageView!
   

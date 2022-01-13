@@ -12,14 +12,18 @@ import SDWebImage
 
 class HomeVC: UIViewController {
   
-  @IBOutlet weak var searchBar: UISearchBar!
-  @IBOutlet weak var postsTableView: UITableView!
-  
   var isSearching = false
   var posts = [Post]()
   var filteredPosts = [Post]()
   var me = String()
   
+  
+  //MARK: - IBOutlets
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var postsTableView: UITableView!
+  
+  
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -39,14 +43,18 @@ class HomeVC: UIViewController {
     translateScreen()
   }
   
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(getPosts), name: NSNotification.Name(rawValue: "reloadPosts"), object: nil)
   }
+  
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     view.endEditing(true)
   }
+  
   
   @objc func getPosts(){
     posts.removeAll()
@@ -97,13 +105,15 @@ class HomeVC: UIViewController {
     ])
   }
   
+  
   @objc func newPostClicked(){
-    performSegue(withIdentifier: "newPost", sender: nil)
+    performSegue(withIdentifier: k.Storyboard.newPostVC ,sender: nil)
   }
   
+  //MARK: - SignOut
   @IBAction func signoutAction(_ sender: UIBarButtonItem) {
     try? Auth.auth().signOut()
-    let vc = self.storyboard?.instantiateViewController(withIdentifier: "signInUpVC")
+    let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.signInUpVC)
     vc?.modalPresentationStyle = .fullScreen
     vc?.modalTransitionStyle = .crossDissolve
     DispatchQueue.main.async {
@@ -125,10 +135,13 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
       return posts.count
     }
   }
+  
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = postsTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostCell
     
     if isSearching {
+      //      return filteredPosts.count
       let post = filteredPosts[indexPath.row]
       cell.postLabel.text = post.postText
       cell.userNameLabel.text = post.userName
@@ -153,6 +166,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
       }
       
     }else{
+      //      return posts.count
       let post = posts[indexPath.row]
       cell.postLabel.text = post.postText
       cell.userNameLabel.text = post.userName
@@ -181,28 +195,37 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     }
     return cell
   }
+  
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if isSearching {
-      performSegue(withIdentifier: "postDetails", sender: filteredPosts[indexPath.row])
+      performSegue(withIdentifier: k.Storyboard.segueGoToPostDetails, sender: filteredPosts[indexPath.row])
     } else {
-      performSegue(withIdentifier: "postDetails", sender: posts[indexPath.row])
+      performSegue(withIdentifier: k.Storyboard.segueGoToPostDetails, sender: posts[indexPath.row])
     }
   }
+  
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "postDetails" {
+    if segue.identifier == k.Storyboard.segueGoToPostDetails {
       let destination = segue.destination as! PostDetailsVC
       destination.post = sender as? Post
     }
   }
-  // deleat
+  
+  
+  //MARK: - Delete
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete{
-      alertAction(id: posts[indexPath.row].postID!)
+    if posts[indexPath.row].userID == me {
+      if editingStyle == .delete{
+        alertAction(id: posts[indexPath.row].postID!)
+      }
     }
   }
   
+  
   func alertAction(id: String){
-    let alert = UIAlertController(title: "Alert".localize(), message: "Are you sure!".localize(), preferredStyle: .alert)
+    let alert = UIAlertController(title: "Delete".localize(), message: "Are you sure!".localize(), preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok".localize(), style: .destructive, handler: { action in
       Firestore.firestore().collection("Posts").document(id).delete()
     }))
@@ -210,8 +233,10 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     self.present(alert, animated: true, completion: nil)
   }
   
+  
   func tableView(_tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool {
     return posts[indexPath.row].userID == me
+    
   }
 }
 
@@ -244,21 +269,30 @@ extension HomeVC {
   }
 }
 
+//MARK: - SearchBar
 extension HomeVC: UISearchBarDelegate {
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     isSearching = true
   }
+  
+  
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     isSearching = false
   }
+  
+  
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     isSearching = false
     searchBar.text = ""
     view.endEditing(true)
   }
+  
+  
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     isSearching = false
   }
+  
+  
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     filteredPosts.removeAll()
     if searchText == "" {
@@ -273,6 +307,7 @@ extension HomeVC: UISearchBarDelegate {
       self.postsTableView.reloadData()
     }
   }
+  
   //MARK: - Localizable
   func translateScreen() {
     searchBar.placeholder = "search".localize()

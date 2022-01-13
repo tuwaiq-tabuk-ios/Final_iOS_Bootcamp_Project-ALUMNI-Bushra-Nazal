@@ -8,7 +8,8 @@
 import UIKit
 
 class MessageCell: UITableViewCell {
-
+ 
+    //MARK: - IBOutlets
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageViewLeft: NSLayoutConstraint!
     @IBOutlet weak var messageViewRight: NSLayoutConstraint!
