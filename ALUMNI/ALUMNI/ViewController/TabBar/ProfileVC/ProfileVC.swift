@@ -11,6 +11,8 @@ import SDWebImage
 
 class ProfileVC: UIViewController {
   
+  
+  //MARK: - IBOutlets
   @IBOutlet weak var scrollBottom: NSLayoutConstraint!
   @IBOutlet weak var profileImage: UIImageView!
   @IBOutlet weak var firstNameTextField: UITextField!
@@ -37,6 +39,7 @@ class ProfileVC: UIViewController {
   var imageCheck = false
   var userID = ""
   
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -49,7 +52,7 @@ class ProfileVC: UIViewController {
     }
     
     translateScreen()
-    settingUpKeyboardNotifications() 
+    settingUpKeyboardNotifications()
     getUserDate()
     
     setUpInputs(status: false)
@@ -76,8 +79,8 @@ class ProfileVC: UIViewController {
     editButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
   }
   
+  
   func setUpInputs(status : Bool) {
-    
     mobileTextField.isEnabled = status
     githubTextField.isEnabled = status
     preferedLanguage.isEnabled = status
@@ -86,9 +89,33 @@ class ProfileVC: UIViewController {
   }
   
   
+  func getUserDate() {
+    Firestore.firestore().collection("Users").document(userID).getDocument { snapshot, error in
+      if error == nil {
+        if let value = snapshot?.data() {
+          self.firstNameTextField.text = value["firstName"] as? String
+          self.lastNameTextField.text = value["lastName"] as? String
+          self.emailTextField.text = value["email"] as? String
+          self.mobileTextField.text = value["mobile"] as? String
+          self.githubTextField.text = value["github"] as? String
+          self.preferedLanguage.text = value["prefferedLanguage"] as? String
+          self.experianceYearsTextField.text = value["experianceYears"] as? String
+          self.descriptionTextView.text = value["description"] as? String
+          if let imageUrl = value["profileImage"] as? String {
+            // convert imageUrl to image
+            self.profileImage.sd_setImage(with: URL(string: imageUrl)) { image, error, cache, url in
+              self.profileImage.image = image
+              self.imageCheck = true
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
   var toggleButton = true
   @IBAction func editButtonAction(_ sender: UIButton) {
-    
     if toggleButton {
       editButton.setTitle("Save".localize(), for: .normal)
       profileImage.isUserInteractionEnabled = true
@@ -200,6 +227,8 @@ class ProfileVC: UIViewController {
     }
     toggleButton.toggle()
   }
+  
+  
   var loadingView = UIView()
   var loadingSpinner = UIActivityIndicatorView()
   func createLoadingView() {
@@ -215,36 +244,12 @@ class ProfileVC: UIViewController {
     view.addSubview(loadingView)
   }
   
+  
   func finishLoadingView() {
     tabBarController?.tabBar.isHidden = false
     loadingView.removeFromSuperview()
   }
   
-  
-  func getUserDate() {
-    
-    Firestore.firestore().collection("Users").document(userID).getDocument { snapshot, error in
-      if error == nil {
-        if let value = snapshot?.data() {
-          self.firstNameTextField.text = value["firstName"] as? String
-          self.lastNameTextField.text = value["lastName"] as? String
-          self.emailTextField.text = value["email"] as? String
-          self.mobileTextField.text = value["mobile"] as? String
-          self.githubTextField.text = value["github"] as? String
-          self.preferedLanguage.text = value["prefferedLanguage"] as? String
-          self.experianceYearsTextField.text = value["experianceYears"] as? String
-          self.descriptionTextView.text = value["description"] as? String
-          if let imageUrl = value["profileImage"] as? String {
-            // convert imageUrl to image
-            self.profileImage.sd_setImage(with: URL(string: imageUrl)) { image, error, cache, url in
-              self.profileImage.image = image
-              self.imageCheck = true
-            }
-          }
-        }
-      }
-    }
-  }
   
   //MARK: - Localizable
   func translateScreen() {
@@ -303,7 +308,6 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
 }
 
 //MARK: - Keyboard
-
 extension ProfileVC{
   func settingUpKeyboardNotifications() {
     NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

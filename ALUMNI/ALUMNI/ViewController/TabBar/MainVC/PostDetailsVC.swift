@@ -11,14 +11,6 @@ import SDWebImage
 
 class PostDetailsVC: UIViewController {
   
-  @IBOutlet weak var postLabel: UILabel!
-  @IBOutlet weak var postImageView: UIImageView!
-  @IBOutlet weak var postImageViewHeight: NSLayoutConstraint!
-  @IBOutlet weak var commentsTableView: UITableView!
-  @IBOutlet weak var commentTextView: UITextView!
-  @IBOutlet weak var sendCommentButton: UIButton!
-  @IBOutlet weak var inputViewBottomLayout: NSLayoutConstraint!
-  
   var post : Post?
   var comments = [Comment]()
   
@@ -27,12 +19,21 @@ class PostDetailsVC: UIViewController {
   var commentUserName = String()
   var commentUserAvatar = String()
   
-  var myLikeID = String()
   
+  //MARK: - IBOutlets
+  @IBOutlet weak var postLabel: UILabel!
+  @IBOutlet weak var postImageView: UIImageView!
+  @IBOutlet weak var postImageViewHeight: NSLayoutConstraint!
+  @IBOutlet weak var commentsTableView: UITableView!
+  @IBOutlet weak var commentTextView: UITextView!
+  @IBOutlet weak var sendCommentButton: UIButton!
+  @IBOutlet weak var inputViewBottomLayout: NSLayoutConstraint!
+  
+  
+  
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    print("POST ID : ", post?.postID)
     
     guard let userID = Auth.auth().currentUser?.uid else {return}
     db.collection("Users").document(userID).getDocument { [self] snapshot, error in
@@ -83,19 +84,15 @@ class PostDetailsVC: UIViewController {
     translateScreen()
   }
   
+  //MARK: -IBAction
   @IBAction func showUserProfile(_ sender: Any) {
-    let vc = storyboard?.instantiateViewController(withIdentifier: "profileVC") as! ProfileVC
+    let vc = storyboard?.instantiateViewController(withIdentifier:"profileVC") as! ProfileVC
     if let id = post?.userID {
       vc.userID = id
       //            self.present(vc, animated: true, completion: nil)
       self.navigationController?.pushViewController(vc, animated: true)
     }
   }
-  
-  
-  
-  
-  
   
   
   @IBAction func sendButtonAction(_ sender: UIButton) {
@@ -120,11 +117,11 @@ class PostDetailsVC: UIViewController {
     }
   }
   
+  
   func getPostComments() {
     comments.removeAll()
     guard let postID = post?.postID else {return}
     db.collection("Comments").order(by: "timestamp", descending: true).whereField("postID", isEqualTo: postID).addSnapshotListener { snapshot, error in
-      print("\n###########\n")
       if error == nil {
         if let value = snapshot?.documents {
           for i in value {
@@ -149,20 +146,20 @@ class PostDetailsVC: UIViewController {
     
   }
   
-  
+  //MARK: - IBAction
   @IBAction func directMessageAction(_ sender: UIButton) {
     let chatUser = ChatUser(name: post?.userName, id: post?.userID)
-    performSegue(withIdentifier: "goToChat", sender: chatUser)
+    performSegue(withIdentifier:k.Storyboard.segueGoToChat, sender: chatUser)
   }
+  
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let vc = segue.destination as! ChatVC
     vc.user = sender as? ChatUser
   }
-  
-  
-  
 }
+
+
 // MARK: - Table view data source
 extension PostDetailsVC : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -228,6 +225,7 @@ extension PostDetailsVC {
     
   }
   
+  
   @objc func keyboardWillShow(notification: NSNotification) {
     let tabbarHeight = tabBarController?.tabBar.frame.height
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -237,6 +235,7 @@ extension PostDetailsVC {
       }, completion: nil)
     }
   }
+  
   
   @objc func keyboardWillHide(notification: NSNotification) {
     self.inputViewBottomLayout.constant = 0

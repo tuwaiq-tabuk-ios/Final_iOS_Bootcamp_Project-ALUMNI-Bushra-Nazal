@@ -10,16 +10,18 @@ import FirebaseAuth
 
 class LoginVC: UIViewController {
   
+  //MARK: - IBOutlets
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
+  
+  //MARK: - View Controller Life Cycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
     translateScreen()
     setupUI()
   }
@@ -27,6 +29,7 @@ class LoginVC: UIViewController {
   
   var emailCheck = false
   var passwordCheck = false
+  
   
   @IBAction func loginButtonAction(_ sender: UIButton) {
     
@@ -51,7 +54,7 @@ class LoginVC: UIViewController {
           errorLabel.alpha = 0
           
           // Go To HomeViewController
-          let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
+          let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.homeViewController)
           vc?.modalTransitionStyle = .crossDissolve
           vc?.modalPresentationStyle = .fullScreen
           DispatchQueue.main.async {
@@ -88,6 +91,7 @@ extension LoginVC {
     passwordTextField.leftViewMode = .always
   }
   
+  
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     view.endEditing(true)
   }
@@ -97,7 +101,7 @@ extension LoginVC {
     emailTextField.placeholder = "email".localize()
     passwordTextField.placeholder = "password".localize()
     errorLabel.text = "error".localize()
-    titleLabel.text = "loginTitle"
+    titleLabel.text = "login"
     loginButton.setTitle(NSLocalizedString("login", comment: ""), for: .normal)
   }
 }

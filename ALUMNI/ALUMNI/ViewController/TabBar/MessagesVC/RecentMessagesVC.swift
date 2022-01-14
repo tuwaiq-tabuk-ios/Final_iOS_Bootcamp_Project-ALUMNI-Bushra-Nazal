@@ -13,6 +13,8 @@ class RecentMessagesVC: UITableViewController {
   let cellId = "Cell"
   var recentChats = [ChatUser]()
   
+  
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -45,6 +47,7 @@ class RecentMessagesVC: UITableViewController {
     return recentChats.count
   }
   
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RecentMessageCell
     cell.usernameLabel.text = recentChats[indexPath.row].name
@@ -55,13 +58,14 @@ class RecentMessagesVC: UITableViewController {
     return cell
   }
   
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let chatUser = ChatUser(name: recentChats[indexPath.row].name, id: recentChats[indexPath.row].id)
-    performSegue(withIdentifier: "goToChat", sender: chatUser)
+    performSegue(withIdentifier: k.Storyboard.segueGoToChat, sender: chatUser)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "goToChat" {
+    if segue.identifier == k.Storyboard.segueGoToChat {
       let nextVC = segue.destination as! ChatVC
       nextVC.user = sender as? ChatUser
     }

@@ -11,6 +11,12 @@ import Firebase
 
 class SignUpVC: UIViewController {
   
+  var firstNameCheck = false
+  var lastNameCheck = false
+  var emailCheck = false
+  var passwordCheck = false
+  
+  //MARK: - IBOutlets
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var firstNameTextField: UITextField!
   @IBOutlet weak var lastNameTextField: UITextField!
@@ -20,20 +26,17 @@ class SignUpVC: UIViewController {
   @IBOutlet weak var errorLabel: UILabel!
   
   
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
     translateScreen()
     setupUI()
     
   }
   
-  var firstNameCheck = false
-  var lastNameCheck = false
-  var emailCheck = false
-  var passwordCheck = false
   
+  //MARK: - IBAction
   @IBAction func signupButtonAction(_ sender : UIButton) {
     
     if let firstName = firstNameTextField.text, firstName.isEmpty == false {
@@ -77,7 +80,7 @@ class SignUpVC: UIViewController {
           ]) { err in
             if err == nil {
               // Go To HomeViewController
-              let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
+              let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.homeViewController)
               vc?.modalTransitionStyle = .crossDissolve
               vc?.modalPresentationStyle = .fullScreen
               DispatchQueue.main.async {
@@ -92,11 +95,7 @@ class SignUpVC: UIViewController {
         }
       }
     }
-    
-    
   }
-  
-  
 }
 
 extension SignUpVC {
@@ -132,7 +131,7 @@ extension SignUpVC {
   
   //MARK: - Localizable
   func translateScreen() {
-    titleLabel.text = "signUpTitle".localize()
+    titleLabel.text = "signUp".localize()
     firstNameTextField.placeholder = "firstName".localize()
     lastNameTextField.placeholder = "lastName".localize()
     emailTextField.placeholder = "email".localize()

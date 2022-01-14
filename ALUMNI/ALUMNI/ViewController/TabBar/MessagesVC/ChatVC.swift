@@ -11,15 +11,18 @@ import IQKeyboardManagerSwift
 
 class ChatVC: UIViewController {
   
-  @IBOutlet weak var chatTableView: UITableView!
-  @IBOutlet weak var messageTextView: UITextView!
-  @IBOutlet weak var sendMessageButton: UIButton!
-  
   var user : ChatUser?
   var userID = String()
   let db = Firestore.firestore()
   var messages = [Message]()
   
+  //MARK: - IBOutlets
+  @IBOutlet weak var chatTableView: UITableView!
+  @IBOutlet weak var messageTextView: UITextView!
+  @IBOutlet weak var sendMessageButton: UIButton!
+  
+  
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -44,6 +47,7 @@ class ChatVC: UIViewController {
     getAllMessages()
   }
   
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.tabBarController?.tabBar.isHidden = true
@@ -53,6 +57,7 @@ class ChatVC: UIViewController {
     super.viewWillDisappear(animated)
     self.tabBarController?.tabBar.isHidden = false
   }
+  
   
   func getAllMessages() {
     db.collection("Messages").order(by: "timestamp", descending: false).addSnapshotListener { snapshot, error in
@@ -100,6 +105,7 @@ extension ChatVC : UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return messages.count
   }
+  
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = chatTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MessageCell

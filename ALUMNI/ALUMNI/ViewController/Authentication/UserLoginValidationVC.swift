@@ -10,12 +10,15 @@ import Firebase
 
 
 class UserLoginValidationVC: UIViewController {
+  
+
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     if Auth.auth().currentUser?.uid == nil {
       //      go to singIn
-      let vc = self.storyboard?.instantiateViewController(withIdentifier: "signInUpVC")
+      let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.signInUpVC)
       vc?.modalPresentationStyle = .fullScreen
       vc?.modalTransitionStyle = .crossDissolve
       DispatchQueue.main.async {
@@ -23,7 +26,7 @@ class UserLoginValidationVC: UIViewController {
       }
     } else {
       //       go to HomeVC
-      let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
+      let vc = self.storyboard?.instantiateViewController(withIdentifier: k.Storyboard.homeViewController)
       vc?.modalPresentationStyle = .fullScreen
       vc?.modalTransitionStyle = .crossDissolve
       DispatchQueue.main.async {

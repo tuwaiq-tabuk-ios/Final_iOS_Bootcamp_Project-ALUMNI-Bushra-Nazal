@@ -9,11 +9,11 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
+  //MARK: - IBOutlets
   @IBOutlet weak var userAvatar: UIImageView!
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var postLabel: UILabel!
   @IBOutlet weak var postImage: UIImageView!
-  
   @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
   
     override func awakeFromNib() {

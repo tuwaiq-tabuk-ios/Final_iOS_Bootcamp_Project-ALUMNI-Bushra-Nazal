@@ -9,11 +9,13 @@ import UIKit
 
 class WelcomeVC: UIViewController {
   
+  //MARK: - IBOutlets
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   
   
+  //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     translateScreen()
@@ -36,6 +38,8 @@ class WelcomeVC: UIViewController {
     }
     
   }
+  
+  
   //MARK: - Localizable
   func translateScreen() {
     signUpButton.setTitle(NSLocalizedString("signUp", comment: ""), for: .normal)
