@@ -11,11 +11,6 @@ import Firebase
 
 class SignUpVC: UIViewController {
   
-  var firstNameCheck = false
-  var lastNameCheck = false
-  var emailCheck = false
-  var passwordCheck = false
-  
   //MARK: - IBOutlets
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var firstNameTextField: UITextField!
@@ -24,6 +19,7 @@ class SignUpVC: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
+  @IBOutlet weak var confirmPasswordTextField: UITextField!
   
   
   //MARK: - View Controller Life Cycle
@@ -38,75 +34,89 @@ class SignUpVC: UIViewController {
   
   //MARK: - IBAction
   @IBAction func signupButtonAction(_ sender : UIButton) {
+    signUp()
+  }
+  
+  
+  //MARK: - Methode
+  
+  private func signUp() {
     
-    if let firstName = firstNameTextField.text, firstName.isEmpty == false {
-      firstNameCheck = true
-    } else {
-      firstNameCheck = false
+    guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
       firstNameTextField.shakeView()
+      return
     }
     
-    if let lastName = lastNameTextField.text, lastName.isEmpty == false {
-      lastNameCheck = true
-    } else {
-      lastNameCheck = false
+    guard let lastName = lastNameTextField.text, lastName.isEmpty == false else {
       lastNameTextField.shakeView()
+      return
     }
     
-    if let email = emailTextField.text, email.isEmpty == false {
-      emailCheck = true
-    } else {
-      emailCheck = false
+    guard let email = emailTextField.text, email.isEmpty == false else {
       emailTextField.shakeView()
+      return
     }
     
-    if let password = passwordTextField.text, password.isEmpty == false {
-      passwordCheck = true
-    } else {
-      passwordCheck = false
+    guard let password = passwordTextField.text, password.isEmpty == false else {
       passwordTextField.shakeView()
+      return
     }
     
-    if firstNameCheck, lastNameCheck, emailCheck, passwordCheck {
-      Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { [self] result, error in
-        if error == nil {
-          errorLabel.alpha = 0
-          guard let userID = result?.user.uid else {return}
-          Firestore.firestore().collection("Users").document(userID).setData([
-            "firstName" : firstNameTextField.text!,
-            "lastName" : lastNameTextField.text!,
-            "email" : emailTextField.text!,
-            "id" : userID
-          ]) { err in
-            if err == nil {
-              // Go To HomeViewController
-              let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.homeViewController)
-              vc?.modalTransitionStyle = .crossDissolve
-              vc?.modalPresentationStyle = .fullScreen
-              DispatchQueue.main.async {
-                self.present(vc!, animated: true, completion: nil)
+    guard let confirmPassword = confirmPasswordTextField.text, confirmPassword.isEmpty == false else {
+      confirmPasswordTextField.shakeView()
+      return
+    }
+    
+    if password != confirmPassword {
+      errorLabel.isHidden = false
+      errorLabel.text = "Password Not Match".localize()
+      return
+    }
+    
+
+      Auth
+        .auth()
+        .createUser(withEmail: emailTextField.text!,
+                    password: passwordTextField.text!) { [self] result, error in
+          if error == nil {
+            errorLabel.isHidden = true
+            guard let userID = result?.user.uid else {return}
+            Firestore.firestore().collection("Users").document(userID).setData([
+              "firstName" : firstNameTextField.text!,
+              "lastName" : lastNameTextField.text!,
+              "email" : emailTextField.text!,
+              "id" : userID
+            ]) { err in
+              if err == nil {
+                // Go To HomeViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.homeViewController)
+                vc?.modalTransitionStyle = .crossDissolve
+                vc?.modalPresentationStyle = .fullScreen
+                DispatchQueue.main.async {
+                  self.present(vc!, animated: true, completion: nil)
+                }
               }
             }
+          } else {
+            errorLabel.isHidden = false
+            errorLabel.text = error?.localizedDescription
           }
-        } else {
-          // show error message
-          errorLabel.alpha = 1
-          errorLabel.text = error?.localizedDescription
         }
-      }
     }
   }
-}
+
 
 extension SignUpVC {
   func setupUI() {
-    errorLabel.alpha = 0
+    //    errorLabel.alpha = 0
+    errorLabel.isHidden = true
     
     firstNameTextField.layer.cornerRadius = 20
     lastNameTextField.layer.cornerRadius = 20
     emailTextField.layer.cornerRadius = 20
     passwordTextField.layer.cornerRadius = 20
     signUpButton.layer.cornerRadius = 20
+    confirmPasswordTextField.layer.cornerRadius = 20
     
     let paddingView1: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 20))
     firstNameTextField.leftView = paddingView1
@@ -123,6 +133,11 @@ extension SignUpVC {
     let paddingView4: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 20))
     passwordTextField.leftView = paddingView4
     passwordTextField.leftViewMode = .always
+    
+    let paddingView5: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 20))
+    confirmPasswordTextField.leftView = paddingView5
+    confirmPasswordTextField.leftViewMode = .always
+  
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -131,7 +146,7 @@ extension SignUpVC {
   
   //MARK: - Localizable
   func translateScreen() {
-    titleLabel.text = "signUp".localize()
+    titleLabel.text = "SignUp".localize()
     firstNameTextField.placeholder = "firstName".localize()
     lastNameTextField.placeholder = "lastName".localize()
     emailTextField.placeholder = "email".localize()

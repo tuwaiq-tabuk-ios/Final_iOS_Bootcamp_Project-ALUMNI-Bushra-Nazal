@@ -18,6 +18,7 @@
 		532272BB276F1F6E00F05437 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 532272BA276F1F6E00F05437 /* GoogleService-Info.plist */; };
 		532272BE276F200300F05437 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BD276F200300F05437 /* FirebaseAuth */; };
 		532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BF276F200300F05437 /* FirebaseFirestore */; };
+		5323F7892794AAC9005E83AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5323F78B2794AAC9005E83AC /* Localizable.strings */; };
 		534897D027903E0100DD7455 /* NewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897CF27903E0100DD7455 /* NewPostVC.swift */; };
 		534897D32790405C00DD7455 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897D22790405C00DD7455 /* K.swift */; };
 		534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 534F46F9277DDD2900AFE5AA /* FirebaseStorage */; };
@@ -25,8 +26,6 @@
 		53525DF8278395AC003309F3 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53525DF6278395AC003309F3 /* CommentCell.xib */; };
 		53525DFA27841C7B003309F3 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF927841C7B003309F3 /* Ad.swift */; };
 		53525DFC27841D70003309F3 /*  Course .swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DFB27841D70003309F3 /*  Course .swift */; };
-		53525E0027861DE2003309F3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53525E0227861DE2003309F3 /* Localizable.strings */; };
-		53525E0527862618003309F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53525E0727862618003309F3 /* InfoPlist.strings */; };
 		53525E0B27862D70003309F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525E0A27862D70003309F3 /* String+Ext.swift */; };
 		536EFB772781838000F53B7B /* PostDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536EFB762781838000F53B7B /* PostDetailsVC.swift */; };
 		536EFB802781879300F53B7B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536EFB7E2781879300F53B7B /* PostCell.swift */; };
@@ -65,18 +64,16 @@
 		532272B2276F1EDD00F05437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		532272B4276F1EDD00F05437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532272BA276F1F6E00F05437 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5323F7882794AA9F005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		5323F78A2794AAC9005E83AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5323F78C2794AACB005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		534897CF27903E0100DD7455 /* NewPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPostVC.swift; path = "../../../../../../../SW-Research/ALUMNI1/ALUMNI/Model/NewPostVC.swift"; sourceTree = "<group>"; };
 		534897D22790405C00DD7455 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		53525DF5278395AC003309F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		53525DF6278395AC003309F3 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		53525DF927841C7B003309F3 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		53525DFB27841D70003309F3 /*  Course .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Course .swift"; sourceTree = "<group>"; };
-		53525DFD27861D22003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
-		53525E0127861DE2003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		53525E0627862618003309F3 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		53525E08278629C1003309F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		53525E0A27862D70003309F3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		53525E0C2786C609003309F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		536EFB762781838000F53B7B /* PostDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsVC.swift; sourceTree = "<group>"; };
 		536EFB7E2781879300F53B7B /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		536EFB7F2781879300F53B7B /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -143,11 +140,11 @@
 				53F338F72770E1410087EEEB /* Model */,
 				53E87399277084F60012B8E7 /* ViewController */,
 				53243A58277112BF0008DB26 /* View */,
-				53525E09278629DF003309F3 /* Localizable */,
 				532272AF276F1EDD00F05437 /* Assets.xcassets */,
 				532272B1276F1EDD00F05437 /* LaunchScreen.storyboard */,
 				532272B4276F1EDD00F05437 /* Info.plist */,
 				532272BA276F1F6E00F05437 /* GoogleService-Info.plist */,
+				5323F78B2794AAC9005E83AC /* Localizable.strings */,
 			);
 			path = ALUMNI;
 			sourceTree = "<group>";
@@ -174,15 +171,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		53525E09278629DF003309F3 /* Localizable */ = {
-			isa = PBXGroup;
-			children = (
-				53525E0727862618003309F3 /* InfoPlist.strings */,
-				53525E0227861DE2003309F3 /* Localizable.strings */,
-			);
-			path = Localizable;
 			sourceTree = "<group>";
 		};
 		53B59B1D278EF402007F4CA1 /* Authentication */ = {
@@ -365,12 +353,11 @@
 				532272BB276F1F6E00F05437 /* GoogleService-Info.plist in Resources */,
 				536EFB812781879300F53B7B /* PostCell.xib in Resources */,
 				53525DF8278395AC003309F3 /* CommentCell.xib in Resources */,
-				53525E0027861DE2003309F3 /* Localizable.strings in Resources */,
+				5323F7892794AAC9005E83AC /* Localizable.strings in Resources */,
 				536EFB8D278189AC00F53B7B /* RecentMessageCell.xib in Resources */,
 				1087A9352785754A00854435 /* MessageCell.xib in Resources */,
 				532272B0276F1EDD00F05437 /* Assets.xcassets in Resources */,
 				532272AE276F1EDB00F05437 /* Main.storyboard in Resources */,
-				53525E0527862618003309F3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +407,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				532272AD276F1EDB00F05437 /* Base */,
-				53525DFD27861D22003309F3 /* ar */,
+				5323F7882794AA9F005E83AC /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -433,22 +420,13 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		53525E0227861DE2003309F3 /* Localizable.strings */ = {
+		5323F78B2794AAC9005E83AC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				53525E0127861DE2003309F3 /* ar */,
-				53525E08278629C1003309F3 /* en */,
+				5323F78A2794AAC9005E83AC /* en */,
+				5323F78C2794AACB005E83AC /* ar */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		53525E0727862618003309F3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53525E0627862618003309F3 /* ar */,
-				53525E0C2786C609003309F3 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

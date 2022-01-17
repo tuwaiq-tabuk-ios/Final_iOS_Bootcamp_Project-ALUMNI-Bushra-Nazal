@@ -38,6 +38,9 @@
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "CRa-LJ-Q7L"; */
 "CRa-LJ-Q7L.placeholder" = "Password";
 
+/* Class = "UINavigationItem"; title = "More"; ObjectID = "D3T-Mb-uut"; */
+"D3T-Mb-uut.title" = "اكثر";
+
 /* Class = "UINavigationItem"; title = "New Post"; ObjectID = "DGU-Sj-c4M"; */
 "DGU-Sj-c4M.title" = "منشور جديد";
 
@@ -46,6 +49,9 @@
 
 /* Class = "UILabel"; text = "Experiance Years"; ObjectID = "F5z-f5-4xk"; */
 "F5z-f5-4xk.text" = "Experiance Years";
+
+/* Class = "UINavigationItem"; title = "Message"; ObjectID = "GE9-Fq-PfI"; */
+"GE9-Fq-PfI.title" = "الرسائل";
 
 /* Class = "UILabel"; text = "Last"; ObjectID = "IId-yX-S0i"; */
 "IId-yX-S0i.text" = "Last";
@@ -133,6 +139,9 @@
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "oeM-u2-hKm"; */
 "oeM-u2-hKm.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "ryy-vT-F8Y"; */
+"ryy-vT-F8Y.title" = "الصفحة الرئيسية";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "u8M-vL-4CY"; */
 "u8M-vL-4CY.title" = " ";

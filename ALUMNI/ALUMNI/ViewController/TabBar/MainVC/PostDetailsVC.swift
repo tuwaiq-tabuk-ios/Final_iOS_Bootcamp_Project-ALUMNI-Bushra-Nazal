@@ -84,7 +84,7 @@ class PostDetailsVC: UIViewController {
     translateScreen()
   }
   
-  //MARK: -IBAction
+  //MARK: -IBAction Show User Profile
   @IBAction func showUserProfile(_ sender: Any) {
     let vc = storyboard?.instantiateViewController(withIdentifier:"profileVC") as! ProfileVC
     if let id = post?.userID {
@@ -146,7 +146,7 @@ class PostDetailsVC: UIViewController {
     
   }
   
-  //MARK: - IBAction
+  //MARK: - IBAction Direct Message
   @IBAction func directMessageAction(_ sender: UIButton) {
     let chatUser = ChatUser(name: post?.userName, id: post?.userID)
     performSegue(withIdentifier:k.Storyboard.segueGoToChat, sender: chatUser)

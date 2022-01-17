@@ -11,6 +11,11 @@ import SDWebImage
 
 class ProfileVC: UIViewController {
   
+  let db = Firestore.firestore()
+  
+  var imageCheck = false
+  var userID = ""
+  
   
   //MARK: - IBOutlets
   @IBOutlet weak var scrollBottom: NSLayoutConstraint!
@@ -34,10 +39,7 @@ class ProfileVC: UIViewController {
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var editButton: UIButton!
   
-  let db = Firestore.firestore()
   
-  var imageCheck = false
-  var userID = ""
   
   //MARK: - View Controller Life Cycle
   override func viewDidLoad() {

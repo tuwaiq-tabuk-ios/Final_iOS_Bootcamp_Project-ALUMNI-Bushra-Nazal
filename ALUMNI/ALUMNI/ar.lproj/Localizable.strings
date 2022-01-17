@@ -2,10 +2,9 @@
   Localizable.strings
   ALUMNI
 
-  Created by bushra nazal alatwi on 02/06/1443 AH.
+  Created by bushra nazal alatwi on 13/06/1443 AH.
   
 */
-
 // WelcomeVC
 "Login" = "تسجيل الدخول";
 "SignUp"= "انشاء حساب";
@@ -69,4 +68,3 @@
 "Course" = "دورة جديدة";
 "Enter a new course" = "ادخل الدورة الجديدة";
 "Course Title" = "عنوان الدورة";
-
