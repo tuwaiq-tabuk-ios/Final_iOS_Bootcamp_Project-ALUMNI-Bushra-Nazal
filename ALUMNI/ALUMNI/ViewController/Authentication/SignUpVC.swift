@@ -74,20 +74,7 @@ class SignUpVC: UIViewController {
     }
     
 
-      Auth
-        .auth()
-        .createUser(withEmail: emailTextField.text!,
-                    password: passwordTextField.text!) { [self] result, error in
-          if error == nil {
-            errorLabel.isHidden = true
-            guard let userID = result?.user.uid else {return}
-            Firestore.firestore().collection("Users").document(userID).setData([
-              "firstName" : firstNameTextField.text!,
-              "lastName" : lastNameTextField.text!,
-              "email" : emailTextField.text!,
-              "id" : userID
-            ]) { err in
-              if err == nil {
+    FSUserManager.shared.signUpUser(firstName: firstName, lastName: lastName, email: email, password: password, errorLabel: errorLabel) {
                 // Go To HomeViewController
                 let vc = self.storyboard?.instantiateViewController(withIdentifier:k.Storyboard.homeViewController)
                 vc?.modalTransitionStyle = .crossDissolve
@@ -97,13 +84,8 @@ class SignUpVC: UIViewController {
                 }
               }
             }
-          } else {
-            errorLabel.isHidden = false
-            errorLabel.text = error?.localizedDescription
           }
-        }
-    }
-  }
+       
 
 
 extension SignUpVC {

@@ -16,19 +16,21 @@ class ChatVC: UIViewController {
   let db = Firestore.firestore()
   var messages = [Message]()
   
-  //MARK: - IBOutlets
-  @IBOutlet weak var chatTableView: UITableView!
-  @IBOutlet weak var messageTextView: UITextView!
-  @IBOutlet weak var sendMessageButton: UIButton!
-  
+    //MARK: - IBOutlets
+    @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var sendMessageButton: UIButton!
+    @IBOutlet weak var messageViewBottom: NSLayoutConstraint!
+    
   
   //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    IQKeyboardManager.shared.enable = true
     IQKeyboardManager.shared.enableAutoToolbar = false
     IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+      
+      settingUpKeyboardNotifications()
     
     
     guard let id = Auth.auth().currentUser?.uid else {return}
@@ -141,6 +143,36 @@ extension ChatVC {
       textView.textColor = .lightGray
     }
   }
+}
+
+
+// Keyboard
+extension ChatVC {
+    
+    func settingUpKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        messageViewBottom.constant = keyboardSize - view.safeAreaInsets.bottom
+
+        let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+
+        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let info = notification.userInfo!
+        let duration : TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        messageViewBottom.constant = 0
+
+        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
+    }
+    
 }
 
 

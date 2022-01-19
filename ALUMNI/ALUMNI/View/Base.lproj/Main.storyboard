@@ -1069,6 +1069,7 @@
                     <connections>
                         <outlet property="chatTableView" destination="gXj-M5-LQs" id="bjN-b9-W1C"/>
                         <outlet property="messageTextView" destination="VP8-NQ-jhs" id="830-YC-kyX"/>
+                        <outlet property="messageViewBottom" destination="r4k-EU-afe" id="hbm-Bg-6rC"/>
                         <outlet property="sendMessageButton" destination="nph-UX-ck2" id="ljM-2d-6dX"/>
                     </connections>
                 </viewController>
