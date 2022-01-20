@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import SDWebImage
+import IQKeyboardManagerSwift
 
 class PostDetailsVC: UIViewController {
   
@@ -34,6 +35,9 @@ class PostDetailsVC: UIViewController {
   //MARK: - View Controller Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+      
+      IQKeyboardManager.shared.enableAutoToolbar = false
+      IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     
     guard let userID = Auth.auth().currentUser?.uid else {return}
     db.collection("Users").document(userID).getDocument { [self] snapshot, error in
@@ -218,30 +222,33 @@ extension PostDetailsVC {
 
 //MARK: - Keyboard
 extension PostDetailsVC {
-  
-  func settingUpKeyboardNotifications() {
-    NotificationCenter.default.addObserver(self, selector: #selector(PostDetailsVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(PostDetailsVC.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    
-  }
-  
-  
-  @objc func keyboardWillShow(notification: NSNotification) {
-    let tabbarHeight = tabBarController?.tabBar.frame.height
-    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-      self.inputViewBottomLayout.constant = keyboardSize.height - tabbarHeight!
-      UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-        self.view.layoutIfNeeded()
-      }, completion: nil)
+    func settingUpKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
-  }
-  
-  
-  @objc func keyboardWillHide(notification: NSNotification) {
-    self.inputViewBottomLayout.constant = 0
-    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-      self.view.layoutIfNeeded()
-    }, completion: nil)
-  }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        inputViewBottomLayout.constant = keyboardSize - view.safeAreaInsets.bottom
+        
+        let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let info = notification.userInfo!
+        let duration : TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        inputViewBottomLayout.constant = 0
+        
+        UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
 }
 

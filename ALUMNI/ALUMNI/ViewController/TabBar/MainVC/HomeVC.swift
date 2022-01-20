@@ -60,7 +60,7 @@ class HomeVC: UIViewController {
     posts.removeAll()
     getAllPosts { tempPosts in
       for i in tempPosts {
-        Firestore.firestore().collection("Users").document(i.userID!).getDocument { snapshot, error in
+        Firestore.firestore().collection("Users").document(i.userID ?? "nil").getDocument { snapshot, error in
           if error == nil {
             if let value = snapshot?.data() {
               let firstName = value["firstName"] as? String

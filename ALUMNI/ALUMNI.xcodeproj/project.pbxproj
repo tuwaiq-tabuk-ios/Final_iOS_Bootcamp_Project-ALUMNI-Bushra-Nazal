@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10490855279721470017EA53 /* NewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10490854279721470017EA53 /* NewPostVC.swift */; };
 		1087A9342785754A00854435 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087A9322785754A00854435 /* MessageCell.swift */; };
 		1087A9352785754A00854435 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1087A9332785754A00854435 /* MessageCell.xib */; };
 		532272A7276F1EDB00F05437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272A6276F1EDB00F05437 /* AppDelegate.swift */; };
@@ -19,7 +20,6 @@
 		532272BE276F200300F05437 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BD276F200300F05437 /* FirebaseAuth */; };
 		532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BF276F200300F05437 /* FirebaseFirestore */; };
 		5323F7892794AAC9005E83AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5323F78B2794AAC9005E83AC /* Localizable.strings */; };
-		534897D027903E0100DD7455 /* NewPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897CF27903E0100DD7455 /* NewPostVC.swift */; };
 		534897D32790405C00DD7455 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897D22790405C00DD7455 /* K.swift */; };
 		534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 534F46F9277DDD2900AFE5AA /* FirebaseStorage */; };
 		53525DF7278395AC003309F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF5278395AC003309F3 /* CommentCell.swift */; };
@@ -47,12 +47,15 @@
 		53E8739327707D5D0012B8E7 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E8739227707D5D0012B8E7 /* SignUpVC.swift */; };
 		53E873952770848F0012B8E7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E873942770848F0012B8E7 /* LoginVC.swift */; };
 		53F338F62770E13C0087EEEB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F338F52770E13C0087EEEB /* Post.swift */; };
+		53FD6C5727986515009AEC83 /* FSUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FD6C5627986515009AEC83 /* FSUserManager.swift */; };
+		53FD6C5A27986583009AEC83 /* FSCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FD6C5927986583009AEC83 /* FSCollectionReference.swift */; };
 		53FEC06F277F056E0027610D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 53FEC06E277F056E0027610D /* SDWebImage */; };
 		53FEC071277F0D7B0027610D /* UserLoginValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FEC070277F0D7B0027610D /* UserLoginValidationVC.swift */; };
 		53FEC073277F16A80027610D /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FEC072277F16A80027610D /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10490854279721470017EA53 /* NewPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostVC.swift; sourceTree = "<group>"; };
 		1087A9322785754A00854435 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		1087A9332785754A00854435 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		532272A3276F1EDB00F05437 /* ALUMNI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALUMNI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +70,6 @@
 		5323F7882794AA9F005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		5323F78A2794AAC9005E83AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5323F78C2794AACB005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		534897CF27903E0100DD7455 /* NewPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPostVC.swift; path = "../../../../../../../SW-Research/ALUMNI1/ALUMNI/Model/NewPostVC.swift"; sourceTree = "<group>"; };
 		534897D22790405C00DD7455 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		53525DF5278395AC003309F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		53525DF6278395AC003309F3 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -93,6 +95,8 @@
 		53E8739227707D5D0012B8E7 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		53E873942770848F0012B8E7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		53F338F52770E13C0087EEEB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		53FD6C5627986515009AEC83 /* FSUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSUserManager.swift; sourceTree = "<group>"; };
+		53FD6C5927986583009AEC83 /* FSCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCollectionReference.swift; sourceTree = "<group>"; };
 		53FEC070277F0D7B0027610D /* UserLoginValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginValidationVC.swift; sourceTree = "<group>"; };
 		53FEC072277F16A80027610D /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,18 +137,20 @@
 		532272A5276F1EDB00F05437 /* ALUMNI */ = {
 			isa = PBXGroup;
 			children = (
-				532272A8276F1EDB00F05437 /* SceneDelegate.swift */,
-				532272A6276F1EDB00F05437 /* AppDelegate.swift */,
+				53FD6C5827986531009AEC83 /* Helper_Mangers */,
+				53FD6C55279864D0009AEC83 /* Managers */,
 				534897D12790400F00DD7455 /* Common */,
 				53E87398277084C30012B8E7 /* Helpers */,
 				53F338F72770E1410087EEEB /* Model */,
 				53E87399277084F60012B8E7 /* ViewController */,
 				53243A58277112BF0008DB26 /* View */,
+				53FD6C542797F5A6009AEC83 /* Localizable */,
+				532272A8276F1EDB00F05437 /* SceneDelegate.swift */,
+				532272A6276F1EDB00F05437 /* AppDelegate.swift */,
 				532272AF276F1EDD00F05437 /* Assets.xcassets */,
 				532272B1276F1EDD00F05437 /* LaunchScreen.storyboard */,
 				532272B4276F1EDD00F05437 /* Info.plist */,
 				532272BA276F1F6E00F05437 /* GoogleService-Info.plist */,
-				5323F78B2794AAC9005E83AC /* Localizable.strings */,
 			);
 			path = ALUMNI;
 			sourceTree = "<group>";
@@ -188,8 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				539A460B2774F2AA00DE001F /* HomeVC.swift */,
-				534897CF27903E0100DD7455 /* NewPostVC.swift */,
 				536EFB762781838000F53B7B /* PostDetailsVC.swift */,
+				10490854279721470017EA53 /* NewPostVC.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -277,6 +283,30 @@
 				53525DF927841C7B003309F3 /* Ad.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		53FD6C542797F5A6009AEC83 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				5323F78B2794AAC9005E83AC /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		53FD6C55279864D0009AEC83 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				53FD6C5627986515009AEC83 /* FSUserManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		53FD6C5827986531009AEC83 /* Helper_Mangers */ = {
+			isa = PBXGroup;
+			children = (
+				53FD6C5927986583009AEC83 /* FSCollectionReference.swift */,
+			);
+			path = Helper_Mangers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +406,6 @@
 				534897D32790405C00DD7455 /* K.swift in Sources */,
 				53525DF7278395AC003309F3 /* CommentCell.swift in Sources */,
 				53525DFC27841D70003309F3 /*  Course .swift in Sources */,
-				534897D027903E0100DD7455 /* NewPostVC.swift in Sources */,
 				536EFB9127818F3300F53B7B /* AdsVC.swift in Sources */,
 				53D85DED2778ECD200D11B72 /* Message.swift in Sources */,
 				53E873952770848F0012B8E7 /* LoginVC.swift in Sources */,
@@ -388,13 +417,16 @@
 				53FEC073277F16A80027610D /* UIViewController+Ext.swift in Sources */,
 				532272A7276F1EDB00F05437 /* AppDelegate.swift in Sources */,
 				536EFB772781838000F53B7B /* PostDetailsVC.swift in Sources */,
+				53FD6C5727986515009AEC83 /* FSUserManager.swift in Sources */,
 				53F338F62770E13C0087EEEB /* Post.swift in Sources */,
 				532272A9276F1EDB00F05437 /* SceneDelegate.swift in Sources */,
 				53D85DF6277AEBA100D11B72 /* UIView+Ext.swift in Sources */,
 				53525E0B27862D70003309F3 /* String+Ext.swift in Sources */,
 				539A460C2774F2AA00DE001F /* HomeVC.swift in Sources */,
 				536EFB802781879300F53B7B /* PostCell.swift in Sources */,
+				53FD6C5A27986583009AEC83 /* FSCollectionReference.swift in Sources */,
 				53525DFA27841C7B003309F3 /* Ad.swift in Sources */,
+				10490855279721470017EA53 /* NewPostVC.swift in Sources */,
 				536EFB8F27818CF300F53B7B /* MoreVC.swift in Sources */,
 				1087A9342785754A00854435 /* MessageCell.swift in Sources */,
 			);
