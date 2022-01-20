@@ -255,14 +255,14 @@ class ProfileVC: UIViewController {
   
   //MARK: - Localizable
   func translateScreen() {
-    firstNameLabel.text = "firstName".localize()
-    lastNameLabel.text = "lastName".localize()
-    emailLabel.text = "email".localize()
-    mobileLabel.text = "mobile".localize()
-    githubLabel.text = "github".localize()
-    preferedLanguageLabel.text = "preferedLanguage".localize()
-    experianceYearsLabel.text = "experianceYears".localize()
-    descriptionLabel.text = "description".localize()
+    firstNameLabel.text = "FirstName".localize()
+    lastNameLabel.text = "LastName".localize()
+    emailLabel.text = "Email".localize()
+    mobileLabel.text = "Mobile".localize()
+    githubLabel.text = "Github".localize()
+    preferedLanguageLabel.text = "Programming language".localize()
+    experianceYearsLabel.text = "Experiance Years".localize()
+    descriptionLabel.text = "Description".localize()
     
   }
 }

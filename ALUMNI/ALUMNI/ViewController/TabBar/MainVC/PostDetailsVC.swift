@@ -13,6 +13,7 @@ import IQKeyboardManagerSwift
 class PostDetailsVC: UIViewController {
   
   var post : Post?
+  
   var comments = [Comment]()
   
   let db = Firestore.firestore()
@@ -106,7 +107,7 @@ class PostDetailsVC: UIViewController {
     db.collection("Comments").document(commentID).setData([
       "commentID" : commentID,
       "commentText" : comment,
-      "postID" : post?.postID,
+      "postID" : post?.postID ?? "nil",
       "commentUserName" : commentUserName,
       "commentAvatarUrl" : commentUserAvatar,
       "commentDate" : sendDate(),
@@ -182,6 +183,7 @@ extension PostDetailsVC : UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print(comments[indexPath.row])
   }
@@ -200,17 +202,16 @@ extension PostDetailsVC {
     }
   }
   
+  
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.text == "comment here" {
       textView.text = ""
-      textView.textColor = .darkGray
     }
   }
   
   override func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text == "" {
       textView.text = "comment here"
-      textView.textColor = .lightGray
     }
   }
   

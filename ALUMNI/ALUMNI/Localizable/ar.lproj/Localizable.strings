@@ -5,6 +5,7 @@
   Created by bushra nazal alatwi on 13/06/1443 AH.
   
 */
+
 // WelcomeVC
 "Login" = "تسجيل الدخول";
 "SignUp"= "انشاء حساب";
@@ -22,6 +23,7 @@
 "email" = "الايميل";
 "password" = "كلمة السر";
 "signUp" = "انشاء حساب";
+"Password Not Match" = "كلمة السر غير متطابقة";
 
 //HomeVC
 "search" = "بحث";
@@ -37,14 +39,14 @@
 "comment here" = "اكتب ردك";
 
 // ProfileVC
-"firstName" = "الاسم الاول";
-"lastName" = "الاسم الاخير";
-"email" = "الايميل";
-"mobile" = "رقم الجوال";
-"github" = "github";
-"preferedLanguage" = "لغة البرمجة المفضلة";
-"experianceYears" = "سنوات الخبرة";
-"description" = "نبذة عنك ";
+"FirstName" = "الاسم الاول";
+"LastName" = "الاسم الاخير";
+"Email" = "الايميل";
+"Mobile" = "رقم الجوال";
+"Github" = "github";
+"Programming language" = "لغة البرمجة المفضلة";
+"Experiance Years" = "سنوات الخبرة";
+"Description" = "نبذة عنك ";
 "Save" = "حفظ";
 "Edit" = "تعديل";
 "Cancel" = "الغاء";
@@ -68,3 +70,6 @@
 "Course" = "دورة جديدة";
 "Enter a new course" = "ادخل الدورة الجديدة";
 "Course Title" = "عنوان الدورة";
+
+ //AboutUs
+"This program is specially designed for graduates of university students for students of the computer department in all its fields to set a specific goal after graduation and determine a programming direction commensurate with his field of study and spend time after graduation in teaching programming and acquiring skills and experience with other students and by contributing with some companies and employment partners Providing various courses in the field of programming And provide job advertisements in line with the qualifications of the students." = "تم تصميم هذا البرنامج خصيصاً لخريجي الجامعات لطلاب قسم الحاسب الآلي بجميع مجالاته لتحديد هدف معين بعد التخرج وتحديد اتجاه البرمجة بما يتناسب مع مجال دراسته وقضاء الوقت بعد التخرج في تعليم البرمجة واكتساب المهارات والخبرة مع طلاب آخرين ومن خلال المساهمة مع بعض الشركات وشركاء التوظيف بتقديم دورات مختلفة في مجال البرمجة وتقديم إعلانات وظيفية تتماشى مع مؤهلات الطلاب";

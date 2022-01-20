@@ -81,7 +81,6 @@ class HomeVC: UIViewController {
         }
         
       }
-      
     }
   }
   
@@ -119,10 +118,7 @@ class HomeVC: UIViewController {
     DispatchQueue.main.async {
       self.present(vc!, animated: true, completion: nil)
     }
-    
   }
-  
-  
 }
 
 // MARK: - Table view data source
@@ -271,27 +267,6 @@ extension HomeVC {
 
 //MARK: - SearchBar
 extension HomeVC: UISearchBarDelegate {
-  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    isSearching = true
-  }
-  
-  
-  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    isSearching = false
-  }
-  
-  
-  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    isSearching = false
-    searchBar.text = ""
-    view.endEditing(true)
-  }
-  
-  
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    isSearching = false
-  }
-  
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     filteredPosts.removeAll()
@@ -304,9 +279,11 @@ extension HomeVC: UISearchBarDelegate {
       filteredPosts = posts.filter({ post in
         return post.postText!.lowercased().contains(searchText.lowercased())
       })
-      self.postsTableView.reloadData()
+      
     }
+    self.postsTableView.reloadData()
   }
+  
   
   //MARK: - Localizable
   func translateScreen() {

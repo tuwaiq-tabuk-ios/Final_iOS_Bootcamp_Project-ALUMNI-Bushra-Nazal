@@ -13,6 +13,7 @@ class FSUserManager {
   
   static var shared = FSUserManager()
   
+  
   func signUpUser(firstName: String,
                   lastName: String,
                   email: String,
@@ -34,7 +35,7 @@ class FSUserManager {
         }
       } else{
         errorLabel.isHidden = false
-//        errorLabel.text = FirError.Error(Code: error!._code)
+        errorLabel.text = error?.localizedDescription
       }
     }
   }
@@ -42,22 +43,22 @@ class FSUserManager {
   
   func signInUser(email: String, password: String, errorLabel : UILabel, completion: @escaping ()->()) {
     Auth.auth().signIn(withEmail: email, password: password) { result, error in
-        if error == nil {
-            errorLabel.isHidden = true
-            //go to mainVC
-            completion()
-        } else {
-            //handle error by show error massage
-            errorLabel.isHidden = false
-//            errorLabel.text = FirError.Error(Code: error!._code)
-        }
+      if error == nil {
+        errorLabel.isHidden = true
+        //go to mainVC
+        completion()
+      } else {
+        //handle error by show error massage
+        errorLabel.isHidden = false
+        errorLabel.text = error?.localizedDescription
+      }
     }
   }
   
 }
 
-  
-  
+
+
 
 
 

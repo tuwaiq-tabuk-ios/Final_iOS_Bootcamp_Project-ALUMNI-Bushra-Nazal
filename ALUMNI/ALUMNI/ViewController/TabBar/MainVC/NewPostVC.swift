@@ -85,6 +85,8 @@ class NewPostVC: UIViewController {
       savePostData(postImageUrl: nil)
     }
   }
+  
+  
   func savePostData(postImageUrl: String?){
     guard let userID = Auth.auth().currentUser?.uid else {return}
     
@@ -165,14 +167,14 @@ extension NewPostVC {
   func textViewDidBeginEditing(_ textView: UITextView){
     if textView.text == "post here" {
       textView.text = ""
-      textView.textColor = .darkGray
+
     }
   }
   
   override func textViewDidEndEditing(_ textView: UITextView){
     if textView.text == "" {
       textView.text = "post here"
-      textView.textColor = .lightGray
+
     }
   }
   

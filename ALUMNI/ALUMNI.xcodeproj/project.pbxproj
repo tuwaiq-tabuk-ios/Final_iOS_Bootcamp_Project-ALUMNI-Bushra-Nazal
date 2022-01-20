@@ -20,6 +20,7 @@
 		532272BE276F200300F05437 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BD276F200300F05437 /* FirebaseAuth */; };
 		532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BF276F200300F05437 /* FirebaseFirestore */; };
 		5323F7892794AAC9005E83AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5323F78B2794AAC9005E83AC /* Localizable.strings */; };
+		5329AE8B2798AB2700E65A2A /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329AE8A2798AB2700E65A2A /* AboutUsVC.swift */; };
 		534897D32790405C00DD7455 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897D22790405C00DD7455 /* K.swift */; };
 		534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 534F46F9277DDD2900AFE5AA /* FirebaseStorage */; };
 		53525DF7278395AC003309F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF5278395AC003309F3 /* CommentCell.swift */; };
@@ -67,9 +68,10 @@
 		532272B2276F1EDD00F05437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		532272B4276F1EDD00F05437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532272BA276F1F6E00F05437 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5323F7882794AA9F005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		5323F78A2794AAC9005E83AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5323F78C2794AACB005E83AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5329AE8A2798AB2700E65A2A /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		5329AE8C2798B17400E65A2A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		5329AE8D2798B18B00E65A2A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		534897D22790405C00DD7455 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		53525DF5278395AC003309F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		53525DF6278395AC003309F3 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				536EFB8E27818CF300F53B7B /* MoreVC.swift */,
 				536EFB9027818F3300F53B7B /* AdsVC.swift */,
 				536EFB9227818F7900F53B7B /* CoursesVC.swift */,
+				5329AE8A2798AB2700E65A2A /* AboutUsVC.swift */,
 			);
 			path = MoreVC;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				53D85DE12777B09200D11B72 /* ProfileVC.swift in Sources */,
 				53FEC071277F0D7B0027610D /* UserLoginValidationVC.swift in Sources */,
 				534897D32790405C00DD7455 /* K.swift in Sources */,
+				5329AE8B2798AB2700E65A2A /* AboutUsVC.swift in Sources */,
 				53525DF7278395AC003309F3 /* CommentCell.swift in Sources */,
 				53525DFC27841D70003309F3 /*  Course .swift in Sources */,
 				536EFB9127818F3300F53B7B /* AdsVC.swift in Sources */,
@@ -439,7 +443,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				532272AD276F1EDB00F05437 /* Base */,
-				5323F7882794AA9F005E83AC /* ar */,
+				5329AE8C2798B17400E65A2A /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -456,7 +460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5323F78A2794AAC9005E83AC /* en */,
-				5323F78C2794AACB005E83AC /* ar */,
+				5329AE8D2798B18B00E65A2A /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

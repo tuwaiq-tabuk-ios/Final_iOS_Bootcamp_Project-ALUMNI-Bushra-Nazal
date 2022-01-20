@@ -39,7 +39,7 @@
 "CRa-LJ-Q7L.placeholder" = "Password";
 
 /* Class = "UINavigationItem"; title = "More"; ObjectID = "D3T-Mb-uut"; */
-"D3T-Mb-uut.title" = "اكثر";
+"D3T-Mb-uut.title" = "أكثر";
 
 /* Class = "UINavigationItem"; title = "New Post"; ObjectID = "DGU-Sj-c4M"; */
 "DGU-Sj-c4M.title" = "منشور جديد";
@@ -88,6 +88,9 @@
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "WKp-ey-DeB"; */
 "WKp-ey-DeB.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "Xyu-ic-YWR"; */
+"Xyu-ic-YWR.placeholder" = "تأكيد كلمة المرور";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "abh-rk-be0"; */
 "abh-rk-be0.title" = " ";
@@ -146,11 +149,14 @@
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "u8M-vL-4CY"; */
 "u8M-vL-4CY.title" = " ";
 
+/* Class = "UINavigationItem"; title = "AboutUs"; ObjectID = "voR-w5-PGe"; */
+"voR-w5-PGe.title" = "حول البرنامج";
+
 /* Class = "UILabel"; text = "Error"; ObjectID = "wVu-vJ-zuK"; */
 "wVu-vJ-zuK.text" = "Error";
 
 /* Class = "UIButton"; configuration.title = "About Us"; ObjectID = "yrd-fa-Zt5"; */
-"yrd-fa-Zt5.configuration.title" = "About Us";
+"yrd-fa-Zt5.configuration.title" = "حول البرنامج";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "yrd-fa-Zt5"; */
 "yrd-fa-Zt5.normalTitle" = "Button";
