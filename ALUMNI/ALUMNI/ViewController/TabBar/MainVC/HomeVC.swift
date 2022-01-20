@@ -27,9 +27,10 @@ class HomeVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
+    // delete
     me = Auth.auth().currentUser!.uid
     
+    // tableView
     postsTableView.dataSource = self
     postsTableView.delegate = self
     postsTableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -84,7 +85,7 @@ class HomeVC: UIViewController {
     }
   }
   
-  
+  // Programmatically add a post button
   func createNewPostButton(){
     let newPostButton = UIButton()
     newPostButton.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +105,7 @@ class HomeVC: UIViewController {
     ])
   }
   
-  
+  // go to NewPostVC
   @objc func newPostClicked(){
     performSegue(withIdentifier: k.Storyboard.newPostVC ,sender: nil)
   }

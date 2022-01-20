@@ -21,11 +21,11 @@
 		532272C0276F200300F05437 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 532272BF276F200300F05437 /* FirebaseFirestore */; };
 		5323F7892794AAC9005E83AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5323F78B2794AAC9005E83AC /* Localizable.strings */; };
 		5329AE8B2798AB2700E65A2A /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329AE8A2798AB2700E65A2A /* AboutUsVC.swift */; };
+		5329AE902799AAD000E65A2A /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5329AE8F2799AAD000E65A2A /* Ad.swift */; };
 		534897D32790405C00DD7455 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534897D22790405C00DD7455 /* K.swift */; };
 		534F46FA277DDD2900AFE5AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 534F46F9277DDD2900AFE5AA /* FirebaseStorage */; };
 		53525DF7278395AC003309F3 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF5278395AC003309F3 /* CommentCell.swift */; };
 		53525DF8278395AC003309F3 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53525DF6278395AC003309F3 /* CommentCell.xib */; };
-		53525DFA27841C7B003309F3 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DF927841C7B003309F3 /* Ad.swift */; };
 		53525DFC27841D70003309F3 /*  Course .swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525DFB27841D70003309F3 /*  Course .swift */; };
 		53525E0B27862D70003309F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53525E0A27862D70003309F3 /* String+Ext.swift */; };
 		536EFB772781838000F53B7B /* PostDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536EFB762781838000F53B7B /* PostDetailsVC.swift */; };
@@ -72,10 +72,10 @@
 		5329AE8A2798AB2700E65A2A /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		5329AE8C2798B17400E65A2A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		5329AE8D2798B18B00E65A2A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5329AE8F2799AAD000E65A2A /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		534897D22790405C00DD7455 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		53525DF5278395AC003309F3 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		53525DF6278395AC003309F3 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		53525DF927841C7B003309F3 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		53525DFB27841D70003309F3 /*  Course .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Course .swift"; sourceTree = "<group>"; };
 		53525E0A27862D70003309F3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		536EFB762781838000F53B7B /* PostDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsVC.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 				536EFB982781936E00F53B7B /* ChatUser.swift */,
 				536EFB9A2782D6A700F53B7B /* Comment.swift */,
 				53525DFB27841D70003309F3 /*  Course .swift */,
-				53525DF927841C7B003309F3 /* Ad.swift */,
+				5329AE8F2799AAD000E65A2A /* Ad.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 				539A460C2774F2AA00DE001F /* HomeVC.swift in Sources */,
 				536EFB802781879300F53B7B /* PostCell.swift in Sources */,
 				53FD6C5A27986583009AEC83 /* FSCollectionReference.swift in Sources */,
-				53525DFA27841C7B003309F3 /* Ad.swift in Sources */,
+				5329AE902799AAD000E65A2A /* Ad.swift in Sources */,
 				10490855279721470017EA53 /* NewPostVC.swift in Sources */,
 				536EFB8F27818CF300F53B7B /* MoreVC.swift in Sources */,
 				1087A9342785754A00854435 /* MessageCell.swift in Sources */,

@@ -61,6 +61,7 @@ class PostDetailsVC: UIViewController {
     postImageView.layer.cornerRadius = 12
     commentTextView.layer.cornerRadius = 20
     
+    //commentsTableView
     commentsTableView.delegate = self
     commentsTableView.dataSource = self
     commentsTableView.register(UINib(nibName: "CommentCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -91,10 +92,10 @@ class PostDetailsVC: UIViewController {
   
   //MARK: -IBAction Show User Profile
   @IBAction func showUserProfile(_ sender: Any) {
+    // go to ProfileVC
     let vc = storyboard?.instantiateViewController(withIdentifier:"profileVC") as! ProfileVC
     if let id = post?.userID {
       vc.userID = id
-      //            self.present(vc, animated: true, completion: nil)
       self.navigationController?.pushViewController(vc, animated: true)
     }
   }
@@ -153,6 +154,7 @@ class PostDetailsVC: UIViewController {
   
   //MARK: - IBAction Direct Message
   @IBAction func directMessageAction(_ sender: UIButton) {
+    // go to ChatVC
     let chatUser = ChatUser(name: post?.userName, id: post?.userID)
     performSegue(withIdentifier:k.Storyboard.segueGoToChat, sender: chatUser)
   }
