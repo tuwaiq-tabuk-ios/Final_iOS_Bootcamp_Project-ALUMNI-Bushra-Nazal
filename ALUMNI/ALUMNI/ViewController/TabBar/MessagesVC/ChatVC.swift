@@ -88,7 +88,7 @@ class ChatVC: UIViewController {
     let messageId = UUID().uuidString
     db.collection("Messages").document(messageId).setData([
       "sender" : userID,
-      "reciever" : user?.id,
+      "reciever" : user?.id ?? "nil",
       "messageText" : messageText,
       "messageId" : messageId,
       "timestamp" : Date().timeIntervalSince1970,
@@ -133,14 +133,14 @@ extension ChatVC {
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.text == "Message here" {
       textView.text = ""
-      textView.textColor = .darkGray
+    
     }
   }
   
   override func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text == "" {
       textView.text = "Message here"
-      textView.textColor = .lightGray
+     
     }
   }
 }

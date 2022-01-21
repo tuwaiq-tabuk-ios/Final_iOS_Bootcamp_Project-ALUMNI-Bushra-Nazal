@@ -17,6 +17,5 @@ struct k {
     static let signInUpVC = "signInUpVC"
     static let segueGoToChat = "goToChat"
     
-  }
-  
+  }  
 }

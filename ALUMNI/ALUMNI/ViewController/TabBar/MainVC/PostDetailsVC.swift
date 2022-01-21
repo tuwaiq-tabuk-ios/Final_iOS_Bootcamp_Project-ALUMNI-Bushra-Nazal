@@ -13,6 +13,7 @@ import IQKeyboardManagerSwift
 class PostDetailsVC: UIViewController {
   
   var post : Post?
+  
   var comments = [Comment]()
   
   let db = Firestore.firestore()
@@ -60,6 +61,7 @@ class PostDetailsVC: UIViewController {
     postImageView.layer.cornerRadius = 12
     commentTextView.layer.cornerRadius = 20
     
+    //commentsTableView
     commentsTableView.delegate = self
     commentsTableView.dataSource = self
     commentsTableView.register(UINib(nibName: "CommentCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -90,10 +92,10 @@ class PostDetailsVC: UIViewController {
   
   //MARK: -IBAction Show User Profile
   @IBAction func showUserProfile(_ sender: Any) {
+    // go to ProfileVC
     let vc = storyboard?.instantiateViewController(withIdentifier:"profileVC") as! ProfileVC
     if let id = post?.userID {
       vc.userID = id
-      //            self.present(vc, animated: true, completion: nil)
       self.navigationController?.pushViewController(vc, animated: true)
     }
   }
@@ -106,7 +108,7 @@ class PostDetailsVC: UIViewController {
     db.collection("Comments").document(commentID).setData([
       "commentID" : commentID,
       "commentText" : comment,
-      "postID" : post?.postID,
+      "postID" : post?.postID ?? "nil",
       "commentUserName" : commentUserName,
       "commentAvatarUrl" : commentUserAvatar,
       "commentDate" : sendDate(),
@@ -152,6 +154,7 @@ class PostDetailsVC: UIViewController {
   
   //MARK: - IBAction Direct Message
   @IBAction func directMessageAction(_ sender: UIButton) {
+    // go to ChatVC
     let chatUser = ChatUser(name: post?.userName, id: post?.userID)
     performSegue(withIdentifier:k.Storyboard.segueGoToChat, sender: chatUser)
   }
@@ -182,6 +185,7 @@ extension PostDetailsVC : UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print(comments[indexPath.row])
   }
@@ -200,17 +204,16 @@ extension PostDetailsVC {
     }
   }
   
+  
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.text == "comment here" {
       textView.text = ""
-      textView.textColor = .darkGray
     }
   }
   
   override func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text == "" {
       textView.text = "comment here"
-      textView.textColor = .lightGray
     }
   }
   
