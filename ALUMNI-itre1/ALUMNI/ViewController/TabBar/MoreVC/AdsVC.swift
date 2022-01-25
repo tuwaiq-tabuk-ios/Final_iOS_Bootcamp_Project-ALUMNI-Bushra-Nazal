@@ -19,6 +19,7 @@ class AdsVC: UITableViewController {
     super.viewDidLoad()
     
     getAllAds()
+    
   }
   
   @IBAction func newAdAction(_ sender: UIBarButtonItem) {
@@ -52,6 +53,7 @@ class AdsVC: UITableViewController {
     
   }
   
+
   func getAllAds() {
     db.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
       self.ads.removeAll()
